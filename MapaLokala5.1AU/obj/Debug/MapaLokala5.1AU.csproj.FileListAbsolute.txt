@@ -1,0 +1,11 @@
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\bin\Debug\MapaLokala5.1AU.exe.config
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\bin\Debug\MapaLokala5.1AU.exe
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\bin\Debug\MapaLokala5.1AU.pdb
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5.1AU.csprojResolveAssemblyReference.cache
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.Properties.Resources.resources
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5.1AU.csproj.GenerateResource.Cache
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5.1AU.exe
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5.1AU.pdb
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.UnosLokalaForm.resources
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.MainForm.resources
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.PrikazLokalaForm.resources
