@@ -9,3 +9,5 @@ C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLoka
 C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.UnosLokalaForm.resources
 C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.MainForm.resources
 C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.PrikazLokalaForm.resources
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.TipLokalaForm.resources
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.NovaEtiketaForm.resources

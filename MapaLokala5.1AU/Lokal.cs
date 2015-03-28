@@ -8,6 +8,15 @@ namespace MapaLokala5._1AU
 {
     class Lokal
     {
+        public TipLokala tipLokala = new TipLokala();
+        public List<Etiketa> listaEtiketa = new List<Etiketa>();
+
+        public string id
+        {
+            get;
+            set;
+        }
+
         public string tip
         {
             get;

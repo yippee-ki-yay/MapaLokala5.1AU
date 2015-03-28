@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.tipLokalaBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,11 +38,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.imeTextBox = new System.Windows.Forms.TextBox();
+            this.alkoholCombo = new System.Windows.Forms.ComboBox();
+            this.ceneCombo = new System.Windows.Forms.ComboBox();
+            this.kapacitetNumber = new System.Windows.Forms.NumericUpDown();
+            this.otvaranjeDate = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.opisLokalaArea = new System.Windows.Forms.RichTextBox();
@@ -56,28 +55,33 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tipComboBox = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ikonica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.kapacitetNumber)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 9);
+            this.label1.Location = new System.Drawing.Point(420, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tip lokala";
-            // 
-            // tipLokalaBox
-            // 
-            this.tipLokalaBox.Location = new System.Drawing.Point(186, 9);
-            this.tipLokalaBox.Name = "tipLokalaBox";
-            this.tipLokalaBox.Size = new System.Drawing.Size(130, 20);
-            this.tipLokalaBox.TabIndex = 1;
             // 
             // button1
             // 
@@ -169,51 +173,51 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "Kapacitet";
             // 
-            // textBox7
+            // imeTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(186, 147);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(139, 20);
-            this.textBox7.TabIndex = 16;
+            this.imeTextBox.Location = new System.Drawing.Point(186, 147);
+            this.imeTextBox.Name = "imeTextBox";
+            this.imeTextBox.Size = new System.Drawing.Size(139, 20);
+            this.imeTextBox.TabIndex = 16;
             // 
-            // comboBox1
+            // alkoholCombo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.alkoholCombo.FormattingEnabled = true;
+            this.alkoholCombo.Items.AddRange(new object[] {
             "ne služi",
             "služi samo do 11",
             "služi i kasno noću"});
-            this.comboBox1.Location = new System.Drawing.Point(186, 185);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(139, 21);
-            this.comboBox1.TabIndex = 19;
+            this.alkoholCombo.Location = new System.Drawing.Point(186, 185);
+            this.alkoholCombo.Name = "alkoholCombo";
+            this.alkoholCombo.Size = new System.Drawing.Size(139, 21);
+            this.alkoholCombo.TabIndex = 19;
             // 
-            // comboBox2
+            // ceneCombo
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.ceneCombo.FormattingEnabled = true;
+            this.ceneCombo.Items.AddRange(new object[] {
             "niske cene",
             "srednje cene",
             "visoke cene",
             "izuzetno visoke cene"});
-            this.comboBox2.Location = new System.Drawing.Point(192, 346);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(139, 21);
-            this.comboBox2.TabIndex = 26;
+            this.ceneCombo.Location = new System.Drawing.Point(192, 346);
+            this.ceneCombo.Name = "ceneCombo";
+            this.ceneCombo.Size = new System.Drawing.Size(139, 21);
+            this.ceneCombo.TabIndex = 26;
             // 
-            // numericUpDown1
+            // kapacitetNumber
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(192, 399);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(133, 20);
-            this.numericUpDown1.TabIndex = 27;
+            this.kapacitetNumber.Location = new System.Drawing.Point(192, 399);
+            this.kapacitetNumber.Name = "kapacitetNumber";
+            this.kapacitetNumber.Size = new System.Drawing.Size(133, 20);
+            this.kapacitetNumber.TabIndex = 27;
             // 
-            // dateTimePicker1
+            // otvaranjeDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(192, 445);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(139, 20);
-            this.dateTimePicker1.TabIndex = 28;
+            this.otvaranjeDate.Location = new System.Drawing.Point(192, 445);
+            this.otvaranjeDate.Name = "otvaranjeDate";
+            this.otvaranjeDate.Size = new System.Drawing.Size(139, 20);
+            this.otvaranjeDate.TabIndex = 28;
             // 
             // button2
             // 
@@ -228,7 +232,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(34, 53);
+            this.label10.Location = new System.Drawing.Point(420, 364);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 20);
             this.label10.TabIndex = 30;
@@ -236,9 +240,9 @@
             // 
             // opisLokalaArea
             // 
-            this.opisLokalaArea.Location = new System.Drawing.Point(149, 53);
+            this.opisLokalaArea.Location = new System.Drawing.Point(424, 399);
             this.opisLokalaArea.Name = "opisLokalaArea";
-            this.opisLokalaArea.Size = new System.Drawing.Size(176, 77);
+            this.opisLokalaArea.Size = new System.Drawing.Size(375, 126);
             this.opisLokalaArea.TabIndex = 31;
             this.opisLokalaArea.Text = "";
             // 
@@ -338,22 +342,119 @@
             this.radioButton6.Text = "Yes";
             this.radioButton6.UseVisualStyleBackColor = true;
             // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(186, 68);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(130, 20);
+            this.idTextBox.TabIndex = 34;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(34, 68);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(68, 20);
+            this.label11.TabIndex = 35;
+            this.label11.Text = "Id lokala";
+            // 
+            // tipComboBox
+            // 
+            this.tipComboBox.FormattingEnabled = true;
+            this.tipComboBox.Location = new System.Drawing.Point(549, 13);
+            this.tipComboBox.Name = "tipComboBox";
+            this.tipComboBox.Size = new System.Drawing.Size(136, 21);
+            this.tipComboBox.TabIndex = 36;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(715, 13);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 37;
+            this.button3.Text = "Dodaj tip";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(420, 134);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 20);
+            this.label12.TabIndex = 38;
+            this.label12.Text = "Etikete";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(522, 131);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(99, 23);
+            this.button4.TabIndex = 39;
+            this.button4.Text = "dodaj etiketu";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Ime,
+            this.Ikonica,
+            this.Opis});
+            this.dataGridView1.Location = new System.Drawing.Point(424, 201);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(375, 150);
+            this.dataGridView1.TabIndex = 40;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // Ime
+            // 
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            // 
+            // Ikonica
+            // 
+            this.Ikonica.HeaderText = "Ikonica";
+            this.Ikonica.Name = "Ikonica";
+            // 
+            // Opis
+            // 
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            // 
             // UnosLokalaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 557);
+            this.ClientSize = new System.Drawing.Size(820, 557);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.tipComboBox);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.opisLokalaArea);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.otvaranjeDate);
+            this.Controls.Add(this.kapacitetNumber);
+            this.Controls.Add(this.ceneCombo);
+            this.Controls.Add(this.alkoholCombo);
+            this.Controls.Add(this.imeTextBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -363,18 +464,18 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.tipLokalaBox);
             this.Controls.Add(this.label1);
             this.Name = "UnosLokalaForm";
             this.Text = "UnosLokalaForm";
             this.Load += new System.EventHandler(this.UnosLokalaForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kapacitetNumber)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,7 +484,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tipLokalaBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -393,11 +493,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox imeTextBox;
+        private System.Windows.Forms.ComboBox alkoholCombo;
+        private System.Windows.Forms.ComboBox ceneCombo;
+        private System.Windows.Forms.NumericUpDown kapacitetNumber;
+        private System.Windows.Forms.DateTimePicker otvaranjeDate;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RichTextBox opisLokalaArea;
@@ -410,5 +510,16 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox tipComboBox;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ikonica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
     }
 }
