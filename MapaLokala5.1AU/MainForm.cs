@@ -39,5 +39,27 @@ namespace MapaLokala5._1AU
         {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void noviLokalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UnosLokalaForm newForm = new UnosLokalaForm();
+            newForm.Show();
+        }
+
+        private void tabelaLokalaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrikazLokalaForm prikazLokala = new PrikazLokalaForm();
+            prikazLokala.Show();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

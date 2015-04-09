@@ -10,18 +10,20 @@ using System.Windows.Forms;
 
 namespace MapaLokala5._1AU
 {
-    public partial class TipLokalaForm : Form
+    partial class TipLokalaForm : Form
     {
         /*Za svaki input box potencijalni alertovi*/
 
 
         private OpenFileDialog ikonicaDijalog = new OpenFileDialog();
         private TipLokala tipLokala = null;
+        private ComboBox tipComboBox = null;
         private Image img = null;
 
-        public TipLokalaForm(TipLokala tipLokala)
+        public TipLokalaForm(TipLokala tipLokala, ComboBox tipComboBox)
         {
             this.tipLokala = tipLokala;
+            this.tipComboBox = tipComboBox;
             InitializeComponent();
             ikonicaDijalog.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
         }
@@ -54,6 +56,14 @@ namespace MapaLokala5._1AU
             this.tipLokala.opis = opisTextBox.Text;
             this.tipLokala.ikonica = img;
 
+            tipComboBox.Items.Add(this.tipLokala.ime);
+            tipComboBox.SelectedItem = this.tipLokala.ime;
+
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

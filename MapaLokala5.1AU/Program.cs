@@ -9,6 +9,7 @@ namespace MapaLokala5._1AU
     static class Program
     {
         public static List<Lokal> listaLokala = new List<Lokal>();
+        public static List<TipLokala> listaTipova = new List<TipLokala>();
 
         /// <summary>
         /// The main entry point for the application.

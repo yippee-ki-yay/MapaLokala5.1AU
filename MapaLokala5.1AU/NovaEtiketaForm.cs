@@ -10,14 +10,16 @@ using System.Windows.Forms;
 
 namespace MapaLokala5._1AU
 {
-    public partial class NovaEtiketaForm : Form
+    partial class NovaEtiketaForm : Form
     {
         private ColorDialog colorDialog = new ColorDialog();
         private List<Etiketa> listaEtiketa = null;
+        private ListBox boxEtiketa = null;
 
-        public NovaEtiketaForm(List<Etiketa> listaEtiketa)
+        public NovaEtiketaForm(List<Etiketa> listaEtiketa, ListBox boxEtiketa)
         {
             this.listaEtiketa = listaEtiketa;
+            this.boxEtiketa = boxEtiketa;
             InitializeComponent();
         }
 
@@ -44,12 +46,20 @@ namespace MapaLokala5._1AU
 
             this.listaEtiketa.Add(etiketa);
 
+            boxEtiketa.Items.Add(etiketa.id);
+
+
             this.Close();
         }
 
         private void NovaEtiketaForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
