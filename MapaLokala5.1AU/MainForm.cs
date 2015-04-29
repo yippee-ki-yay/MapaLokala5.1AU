@@ -7,15 +7,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace MapaLokala5._1AU
 {
     public partial class MainForm : Form
     {
+        public static SQLiteHelper baza = null;
 
         public MainForm()
         {
             InitializeComponent();
+            
+            baza = new SQLiteHelper("baza.sqlite");
+
+            baza.createTable(@"create table if not exists lokali 
+                              (id TEXT PRIMARY KEY, 
+                               ime TEXT,
+                               kapacitet INT,
+                               datum TEXT,
+                               opis TEXT,
+                               alkohol TEXT,
+                               cene TEXT,
+                               pusenje INT,
+                               rezervacija INT,
+                               hendikepirane INT,
+                               tip_id TEXT,
+                               FOREIGN KEY(tip_id) REFERENCES tipovi(id))");
+
+            baza.createTable(@"create table if not exists etikete 
+                              (id TEXT PRIMARY KEY, 
+                               boja INT,
+                               opis TEXT,
+                               lokal_id TEXT,
+                               FOREIGN KEY(lokal_id) REFERENCES lokali(id))");
+
+            baza.createTable(@"create table if not exists tipovi 
+                              (id TEXT PRIMARY KEY,
+                               ime TEXT, 
+                               ikona TEXT,
+                               opis TEXT
+                               )");
+
+           // baza.Add("insert into highscores (name, score) values ('Me', 3000)");
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -52,13 +52,13 @@ namespace MapaLokala5._1AU
             this.opisLokalaArea = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.hendikepBtn = new System.Windows.Forms.RadioButton();
+            this.groupPusenje = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.pusenjeBtn = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.rezervacijeBtn = new System.Windows.Forms.RadioButton();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@ namespace MapaLokala5._1AU
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kapacitetNumber)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupPusenje.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -100,6 +100,7 @@ namespace MapaLokala5._1AU
             // 
             // tipComboBox
             // 
+            this.tipComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipComboBox.FormattingEnabled = true;
             this.tipComboBox.Location = new System.Drawing.Point(150, 135);
             this.tipComboBox.Name = "tipComboBox";
@@ -211,6 +212,7 @@ namespace MapaLokala5._1AU
             // 
             // alkoholCombo
             // 
+            this.alkoholCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.alkoholCombo.FormattingEnabled = true;
             this.alkoholCombo.Items.AddRange(new object[] {
             "ne služi",
@@ -223,6 +225,7 @@ namespace MapaLokala5._1AU
             // 
             // ceneCombo
             // 
+            this.ceneCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ceneCombo.FormattingEnabled = true;
             this.ceneCombo.Items.AddRange(new object[] {
             "niske cene",
@@ -243,6 +246,7 @@ namespace MapaLokala5._1AU
             // 
             // otvaranjeDate
             // 
+            this.otvaranjeDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.otvaranjeDate.Location = new System.Drawing.Point(150, 245);
             this.otvaranjeDate.Name = "otvaranjeDate";
             this.otvaranjeDate.Size = new System.Drawing.Size(152, 21);
@@ -270,7 +274,7 @@ namespace MapaLokala5._1AU
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.hendikepBtn);
             this.groupBox1.Location = new System.Drawing.Point(262, 231);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(139, 34);
@@ -287,30 +291,30 @@ namespace MapaLokala5._1AU
             this.radioButton2.Size = new System.Drawing.Size(41, 17);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
+            this.radioButton2.Text = "Ne";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // hendikepBtn
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(15, 11);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(46, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Yes";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.hendikepBtn.AutoSize = true;
+            this.hendikepBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hendikepBtn.Location = new System.Drawing.Point(15, 11);
+            this.hendikepBtn.Name = "hendikepBtn";
+            this.hendikepBtn.Size = new System.Drawing.Size(41, 17);
+            this.hendikepBtn.TabIndex = 0;
+            this.hendikepBtn.TabStop = true;
+            this.hendikepBtn.Text = "Da";
+            this.hendikepBtn.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // groupPusenje
             // 
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Location = new System.Drawing.Point(262, 119);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(139, 34);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
+            this.groupPusenje.Controls.Add(this.radioButton3);
+            this.groupPusenje.Controls.Add(this.pusenjeBtn);
+            this.groupPusenje.Location = new System.Drawing.Point(262, 119);
+            this.groupPusenje.Name = "groupPusenje";
+            this.groupPusenje.Size = new System.Drawing.Size(139, 34);
+            this.groupPusenje.TabIndex = 7;
+            this.groupPusenje.TabStop = false;
             // 
             // radioButton3
             // 
@@ -321,25 +325,25 @@ namespace MapaLokala5._1AU
             this.radioButton3.Size = new System.Drawing.Size(41, 17);
             this.radioButton3.TabIndex = 1;
             this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "No";
+            this.radioButton3.Text = "Ne";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // pusenjeBtn
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(12, 11);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(46, 17);
-            this.radioButton4.TabIndex = 0;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Yes";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.pusenjeBtn.AutoSize = true;
+            this.pusenjeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pusenjeBtn.Location = new System.Drawing.Point(12, 11);
+            this.pusenjeBtn.Name = "pusenjeBtn";
+            this.pusenjeBtn.Size = new System.Drawing.Size(41, 17);
+            this.pusenjeBtn.TabIndex = 0;
+            this.pusenjeBtn.TabStop = true;
+            this.pusenjeBtn.Text = "Da";
+            this.pusenjeBtn.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.radioButton5);
-            this.groupBox3.Controls.Add(this.radioButton6);
+            this.groupBox3.Controls.Add(this.rezervacijeBtn);
             this.groupBox3.Location = new System.Drawing.Point(262, 180);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(139, 34);
@@ -355,20 +359,20 @@ namespace MapaLokala5._1AU
             this.radioButton5.Size = new System.Drawing.Size(41, 17);
             this.radioButton5.TabIndex = 1;
             this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "No";
+            this.radioButton5.Text = "Ne";
             this.radioButton5.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // rezervacijeBtn
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(12, 11);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(46, 17);
-            this.radioButton6.TabIndex = 0;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Yes";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.rezervacijeBtn.AutoSize = true;
+            this.rezervacijeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rezervacijeBtn.Location = new System.Drawing.Point(12, 11);
+            this.rezervacijeBtn.Name = "rezervacijeBtn";
+            this.rezervacijeBtn.Size = new System.Drawing.Size(41, 17);
+            this.rezervacijeBtn.TabIndex = 0;
+            this.rezervacijeBtn.TabStop = true;
+            this.rezervacijeBtn.Text = "Da";
+            this.rezervacijeBtn.UseVisualStyleBackColor = true;
             // 
             // idTextBox
             // 
@@ -461,7 +465,7 @@ namespace MapaLokala5._1AU
             this.groupBox5.Controls.Add(this.ceneCombo);
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.groupBox3);
-            this.groupBox5.Controls.Add(this.groupBox2);
+            this.groupBox5.Controls.Add(this.groupPusenje);
             this.groupBox5.Controls.Add(this.groupBox1);
             this.groupBox5.Controls.Add(this.alkoholCombo);
             this.groupBox5.Controls.Add(this.label7);
@@ -498,8 +502,8 @@ namespace MapaLokala5._1AU
             ((System.ComponentModel.ISupportInitialize)(this.kapacitetNumber)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupPusenje.ResumeLayout(false);
+            this.groupPusenje.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -525,13 +529,13 @@ namespace MapaLokala5._1AU
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rezervacijeBtn;
+        private System.Windows.Forms.GroupBox groupPusenje;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton pusenjeBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton hendikepBtn;
         private System.Windows.Forms.RichTextBox opisLokalaArea;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker otvaranjeDate;

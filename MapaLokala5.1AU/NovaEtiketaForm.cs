@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,11 @@ namespace MapaLokala5._1AU
         private ColorDialog colorDialog = new ColorDialog();
         private List<Etiketa> listaEtiketa = null;
         private ListBox boxEtiketa = null;
+        private string id;
 
-        public NovaEtiketaForm(List<Etiketa> listaEtiketa, ListBox boxEtiketa)
+        public NovaEtiketaForm(List<Etiketa> listaEtiketa, ListBox boxEtiketa,string id)
         {
+            this.id = id;
             this.listaEtiketa = listaEtiketa;
             this.boxEtiketa = boxEtiketa;
             InitializeComponent();
@@ -48,6 +51,17 @@ namespace MapaLokala5._1AU
 
             boxEtiketa.Items.Add(etiketa.id);
 
+            string insert = @"insert into etikete
+                                  (id,opis, boja, lokal_id)
+                                  VALUES (@id, @opis, @boja, @lokal_id)";
+
+            SQLiteCommand tableCreation = new SQLiteCommand(insert, MainForm.baza.dbConn);
+            tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
+            tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
+            tableCreation.Parameters.AddWithValue("@boja", colorDialog.Color.GetHashCode());
+            tableCreation.Parameters.AddWithValue("@lokal_id", id);
+
+            tableCreation.ExecuteNonQuery();
 
             this.Close();
         }
