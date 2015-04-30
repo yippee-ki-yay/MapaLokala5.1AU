@@ -18,6 +18,11 @@ namespace MapaLokala5._1AU
         private ListBox boxEtiketa = null;
         private string id;
 
+        public NovaEtiketaForm()
+        {
+            InitializeComponent();
+        }
+
         public NovaEtiketaForm(List<Etiketa> listaEtiketa, ListBox boxEtiketa,string id)
         {
             this.id = id;

@@ -40,6 +40,11 @@
             this.tabelaLokalaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novaEtiketaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaLokalaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaTipovaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaEtiketaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +65,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.lokaliToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.pomoćToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(647, 24);
@@ -101,10 +107,11 @@
             // 
             this.lokaliToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.noviLokalToolStripMenuItem,
-            this.tabelaLokalaToolStripMenuItem});
+            this.tabelaLokalaToolStripMenuItem,
+            this.novaEtiketaToolStripMenuItem});
             this.lokaliToolStripMenuItem.Name = "lokaliToolStripMenuItem";
             this.lokaliToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.lokaliToolStripMenuItem.Text = "Lokali";
+            this.lokaliToolStripMenuItem.Text = "Dodaj";
             // 
             // noviLokalToolStripMenuItem
             // 
@@ -116,15 +123,19 @@
             // tabelaLokalaToolStripMenuItem
             // 
             this.tabelaLokalaToolStripMenuItem.Name = "tabelaLokalaToolStripMenuItem";
-            this.tabelaLokalaToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.tabelaLokalaToolStripMenuItem.Text = "Tabela lokala";
+            this.tabelaLokalaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tabelaLokalaToolStripMenuItem.Text = "Novi tip";
             this.tabelaLokalaToolStripMenuItem.Click += new System.EventHandler(this.tabelaLokalaToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tabelaLokalaToolStripMenuItem1,
+            this.tabelaTipovaToolStripMenuItem,
+            this.tabelaEtiketaToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.helpToolStripMenuItem.Text = "Pomoć";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.helpToolStripMenuItem.Text = "Prikaži";
             // 
             // treeView1
             // 
@@ -132,6 +143,40 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(148, 399);
             this.treeView1.TabIndex = 4;
+            // 
+            // pomoćToolStripMenuItem
+            // 
+            this.pomoćToolStripMenuItem.Name = "pomoćToolStripMenuItem";
+            this.pomoćToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.pomoćToolStripMenuItem.Text = "Pomoć";
+            // 
+            // novaEtiketaToolStripMenuItem
+            // 
+            this.novaEtiketaToolStripMenuItem.Name = "novaEtiketaToolStripMenuItem";
+            this.novaEtiketaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.novaEtiketaToolStripMenuItem.Text = "Nova etiketa";
+            this.novaEtiketaToolStripMenuItem.Click += new System.EventHandler(this.novaEtiketaToolStripMenuItem_Click);
+            // 
+            // tabelaLokalaToolStripMenuItem1
+            // 
+            this.tabelaLokalaToolStripMenuItem1.Name = "tabelaLokalaToolStripMenuItem1";
+            this.tabelaLokalaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.tabelaLokalaToolStripMenuItem1.Text = "Tabela lokala";
+            this.tabelaLokalaToolStripMenuItem1.Click += new System.EventHandler(this.tabelaLokalaToolStripMenuItem1_Click);
+            // 
+            // tabelaTipovaToolStripMenuItem
+            // 
+            this.tabelaTipovaToolStripMenuItem.Name = "tabelaTipovaToolStripMenuItem";
+            this.tabelaTipovaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tabelaTipovaToolStripMenuItem.Text = "Tabela tipova";
+            this.tabelaTipovaToolStripMenuItem.Click += new System.EventHandler(this.tabelaTipovaToolStripMenuItem_Click);
+            // 
+            // tabelaEtiketaToolStripMenuItem
+            // 
+            this.tabelaEtiketaToolStripMenuItem.Name = "tabelaEtiketaToolStripMenuItem";
+            this.tabelaEtiketaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tabelaEtiketaToolStripMenuItem.Text = "Tabela etiketa";
+            this.tabelaEtiketaToolStripMenuItem.Click += new System.EventHandler(this.tabelaEtiketaToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -166,6 +211,11 @@
         private System.Windows.Forms.ToolStripMenuItem tabelaLokalaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ToolStripMenuItem pomoćToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novaEtiketaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tabelaLokalaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tabelaTipovaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tabelaEtiketaToolStripMenuItem;
     }
 }
 

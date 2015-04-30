@@ -88,13 +88,32 @@ namespace MapaLokala5._1AU
 
         private void tabelaLokalaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrikazLokalaForm prikazLokala = new PrikazLokalaForm();
-            prikazLokala.Show();
+            new TipLokalaForm().Show();
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tabelaLokalaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new PrikazLokalaForm().Show();
+        }
+
+        private void tabelaTipovaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FilterBtn().Show();
+        }
+
+        private void tabelaEtiketaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TabelaEtiketa().Show();
+        }
+
+        private void novaEtiketaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new NovaEtiketaForm().Show();
         }
     }
 }

@@ -13,3 +13,5 @@ C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLoka
 C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.NovaEtiketaForm.resources
 C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\bin\Debug\System.Data.SQLite.dll
 C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\bin\Debug\System.Data.SQLite.xml
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.TabelaEtiketa.resources
+C:\Users\korisnik\Documents\Visual Studio 2012\Projects\MapaLokala5.1AU\MapaLokala5.1AU\obj\Debug\MapaLokala5._1AU.FilterBtn.resources

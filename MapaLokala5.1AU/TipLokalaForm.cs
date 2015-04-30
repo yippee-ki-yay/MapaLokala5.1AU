@@ -21,11 +21,38 @@ namespace MapaLokala5._1AU
         private ComboBox tipComboBox = null;
         private Image img = null;
         private string filename = null;
+        private string update_id;
 
         public string tip_id
         {
             get;
             set;
+        }
+
+        public TipLokalaForm(string id)
+        {
+            InitializeComponent();
+            ikonicaDijalog.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
+
+            update_id = id;
+
+                SQLiteDataReader r = MainForm.baza.Select("select * from tipovi WHERE id="+id);
+
+                while (r.Read())
+                {
+                    idTextBox.Text = r["id"].ToString();
+                    imeTextBox.Text = r["ime"].ToString();
+                    opisTextBox.Text = r["id"].ToString();
+                    filename = r["ikona"].ToString();
+                    pictureBox1.Load(filename);
+                }
+            
+        }
+
+        public TipLokalaForm()
+        {
+            InitializeComponent();
+            ikonicaDijalog.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
         }
 
         public TipLokalaForm(TipLokala tipLokala, ComboBox tipComboBox)
@@ -57,31 +84,32 @@ namespace MapaLokala5._1AU
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string sql;
 
-            /*Ovde bi trebali da imamo neku proveru da li je sve uneto*/
-            this.tipLokala.id = idTextBox.Text;
-            this.tipLokala.ime = imeTextBox.Text;
-            this.tipLokala.opis = opisTextBox.Text;
-            this.tipLokala.ikonica = img;
+            if (update_id != null)
+            {
+                sql = "update tipovi "
+                             +"set id='"+idTextBox.Text+ "', ime='"+ imeTextBox.Text
+                              +"',opis='" + opisTextBox.Text + "', ikona='"+filename
+                             +"' WHERE id='" + update_id+ "'";
 
-            tipComboBox.Items.Add(this.tipLokala.ime);
-            tipComboBox.SelectedItem = this.tipLokala.ime;
-
-
-
-            string insert = @"insert into tipovi
+                SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                tableCreation.ExecuteNonQuery();
+            }
+            else
+            {
+                sql = @"insert into tipovi
                                   (id,ime, opis, ikona)
                                   VALUES (@id, @ime, @opis, @ikona)";
 
-            SQLiteCommand tableCreation = new SQLiteCommand(insert, MainForm.baza.dbConn);
-            tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
-            tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
-            tableCreation.Parameters.AddWithValue("@ime", imeTextBox.Text);
-            tableCreation.Parameters.AddWithValue("@ikona", filename);
+                SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
+                tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
+                tableCreation.Parameters.AddWithValue("@ime", imeTextBox.Text);
+                tableCreation.Parameters.AddWithValue("@ikona", filename);
 
-            tableCreation.ExecuteNonQuery();
-
-            this.tip_id = idTextBox.Text;
+                tableCreation.ExecuteNonQuery();
+            }
 
             this.Close();
         }
