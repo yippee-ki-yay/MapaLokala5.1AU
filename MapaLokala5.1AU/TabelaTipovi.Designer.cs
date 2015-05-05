@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.tipoviTabela = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ikonica = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.izbrisiBtn = new System.Windows.Forms.Button();
             this.azurirajBtn = new System.Windows.Forms.Button();
@@ -41,6 +37,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.filterCombo = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ikonica = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tipoviTabela)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -49,6 +49,7 @@
             // tipoviTabela
             // 
             this.tipoviTabela.AllowUserToAddRows = false;
+            this.tipoviTabela.AllowUserToDeleteRows = false;
             this.tipoviTabela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tipoviTabela.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -57,31 +58,12 @@
             this.Opis});
             this.tipoviTabela.Location = new System.Drawing.Point(0, 0);
             this.tipoviTabela.Name = "tipoviTabela";
+            this.tipoviTabela.ReadOnly = true;
             this.tipoviTabela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tipoviTabela.Size = new System.Drawing.Size(444, 223);
             this.tipoviTabela.TabIndex = 0;
             this.tipoviTabela.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.tipoviTabela.SelectionChanged += new System.EventHandler(this.tipoviTabela_SelectionChanged);
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // Ime
-            // 
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            // 
-            // Ikonica
-            // 
-            this.Ikonica.HeaderText = "Ikonica";
-            this.Ikonica.Name = "Ikonica";
-            // 
-            // Opis
-            // 
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
             // 
             // groupBox1
             // 
@@ -148,6 +130,7 @@
             this.filterCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.filterCombo.FormattingEnabled = true;
             this.filterCombo.Items.AddRange(new object[] {
+            "sve",
             "id",
             "ime",
             "ikona",
@@ -168,6 +151,32 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtriraj";
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Ime
+            // 
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Ikonica
+            // 
+            this.Ikonica.HeaderText = "Ikonica";
+            this.Ikonica.Name = "Ikonica";
+            this.Ikonica.ReadOnly = true;
+            this.Ikonica.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ikonica.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Opis
+            // 
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            this.Opis.ReadOnly = true;
             // 
             // FilterBtn
             // 
@@ -191,10 +200,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView tipoviTabela;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ikonica;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button izbrisiBtn;
         private System.Windows.Forms.Button azurirajBtn;
@@ -203,5 +208,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox filterCombo;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewImageColumn Ikonica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
     }
 }

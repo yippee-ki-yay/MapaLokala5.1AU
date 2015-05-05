@@ -14,19 +14,40 @@ namespace MapaLokala5._1AU
     partial class NovaEtiketaForm : Form
     {
         private ColorDialog colorDialog = new ColorDialog();
-        private List<Etiketa> listaEtiketa = null;
         private ListBox boxEtiketa = null;
         private string id;
+        private string update_id;
 
         public NovaEtiketaForm()
         {
             InitializeComponent();
         }
 
-        public NovaEtiketaForm(List<Etiketa> listaEtiketa, ListBox boxEtiketa,string id)
+        public NovaEtiketaForm(string update_id)
+        {
+            InitializeComponent();
+
+            this.update_id = update_id;
+
+            SQLiteDataReader r = MainForm.baza.Select("select * from etikete WHERE id=" + update_id);
+
+            while (r.Read())
+            {
+                idTextBox.Text = r["id"].ToString();
+                opisTextBox.Text = r["opis"].ToString();
+                string colorCode = r["boja"].ToString();
+
+                Int32 iColorInt = Convert.ToInt32(colorCode.Substring(1), 16);
+                Color curveColor = System.Drawing.Color.FromArgb(iColorInt);
+
+                pictureBox1.BackColor = curveColor;
+               
+            }
+        }
+
+        public NovaEtiketaForm(ListBox boxEtiketa,string id)
         {
             this.id = id;
-            this.listaEtiketa = listaEtiketa;
             this.boxEtiketa = boxEtiketa;
             InitializeComponent();
         }
@@ -46,27 +67,34 @@ namespace MapaLokala5._1AU
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Etiketa etiketa = new Etiketa();
 
-            etiketa.id = idTextBox.Text;
-            etiketa.opis = opisTextBox.Text;
-            etiketa.color = colorDialog.Color;
+            string sql;
 
-            this.listaEtiketa.Add(etiketa);
+            if (update_id != null)
+            {
+                sql = "update etikete "
+                             + "set id='" + idTextBox.Text +
+                              "',opis='" + opisTextBox.Text + "', boja='" + colorDialog.Color.ToArgb().ToString()
+                             + "' WHERE id='" + update_id + "'";
 
-            boxEtiketa.Items.Add(etiketa.id);
+                SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                tableCreation.ExecuteNonQuery();
+            }
+            else
+            {
 
-            string insert = @"insert into etikete
+                sql = @"insert into etikete
                                   (id,opis, boja, lokal_id)
                                   VALUES (@id, @opis, @boja, @lokal_id)";
 
-            SQLiteCommand tableCreation = new SQLiteCommand(insert, MainForm.baza.dbConn);
-            tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
-            tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
-            tableCreation.Parameters.AddWithValue("@boja", colorDialog.Color.GetHashCode());
-            tableCreation.Parameters.AddWithValue("@lokal_id", id);
+                SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
+                tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
+                tableCreation.Parameters.AddWithValue("@boja", colorDialog.Color.ToArgb().ToString());
+                tableCreation.Parameters.AddWithValue("@lokal_id", id);
 
-            tableCreation.ExecuteNonQuery();
+                tableCreation.ExecuteNonQuery();
+            }
 
             this.Close();
         }

@@ -18,12 +18,61 @@ namespace MapaLokala5._1AU
         private bool formIsValid = true;
         private Regex imeRex = null;
         private string tip_id;
+        private string update_id;
+
+        public UnosLokalaForm(string lokal_id)
+        {
+            InitializeComponent();
+
+            this.update_id = lokal_id;
+
+               SQLiteDataReader r = MainForm.baza.Select("select * from lokali WHERE id="+update_id);
+
+                while (r.Read())
+                {
+                    idTextBox.Text = r["id"].ToString();
+                    imeTextBox.Text = r["ime"].ToString();
+                    opisLokalaArea.Text = r["opis"].ToString();
+                    kapacitetNumber.Value = (int) r["kapacitet"];
+                    string date = r["datum"].ToString();
+                    otvaranjeDate.Value = Convert.ToDateTime(date);
+
+                    if (((int)r["pusenje"]) == 1)
+                        pusenjeBtn.Checked = true;
+                    else
+                        radioButton3.Checked = true;
+
+                    if (((int)r["rezervacija"]) == 1)
+                        rezervacijeBtn.Checked = true;
+                    else
+                        radioButton5.Checked = true;
+
+                    if (((int)r["hendikepirane"]) == 1)
+                        hendikepBtn.Checked = true;
+                    else
+                        radioButton2.Checked = true;
+
+                    alkoholCombo.SelectedItem = r["alkohol"].ToString();
+                    ceneCombo.SelectedItem = r["cene"].ToString();
+
+                }
+        }
 
         public UnosLokalaForm()
         {
-
             InitializeComponent();
             imeRex = new Regex("^[A-Za-z_-][A-Za-z0-9_-]*$");
+            populateEtikete();
+        }
+
+        private void populateEtikete()
+        {
+             SQLiteDataReader r = MainForm.baza.Select("select id from etikete"); 
+
+             while (r.Read())
+             {
+                 checkedListBox1.Items.Add(r["id"], false);
+             }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,42 +80,48 @@ namespace MapaLokala5._1AU
             formIsValid = true;
             this.ValidateChildren();
 
+            string sql;
 
-            if (formIsValid == true)
+            if (update_id != null)
             {
+                sql = "update etikete "
+                             + "set id='" + idTextBox.Text +
+                              "',opis='" + opisLokalaArea.Text + "', ime='" + imeTextBox.Text +
+                              "',kapacitet='" + (int)kapacitetNumber.Value + "', datum='" + otvaranjeDate.Value.ToString()
+                             + "',opis='" + opisLokalaArea.Text + "', ime='" + imeTextBox.Text 
+                             + "',opis='" + opisLokalaArea.Text + "', ime='" + imeTextBox.Text 
+                             + "' WHERE id='" + update_id + "'";
 
-                /**Popuni ovde sve podatke*/
-                this.noviLokal.id = idTextBox.Text;
-                this.noviLokal.opis = opisLokalaArea.Text;
-                this.noviLokal.ime = imeTextBox.Text;
-                this.noviLokal.kapacitet = (int)kapacitetNumber.Value;
-                this.noviLokal.datum = otvaranjeDate.Value;
-                this.noviLokal.cene = ceneCombo.SelectedText;
+                SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                tableCreation.ExecuteNonQuery();
+            }
+            else
+            {
+                if (formIsValid == true)
+                {
 
-                string insert = @"insert into lokali
+                    sql = @"insert into lokali
                                   (id, opis, ime, kapacitet, datum, cene, alkohol, pusenje, rezervacija,
                                              hendikepirane, tip_id)
                                   VALUES (@id, @opis, @ime, @kapacitet, @datum, @cene, 
                                          @alkohol, @pusenje, @rezervacija, @hendikepirane, @tip_id)";
 
-                SQLiteCommand tableCreation = new SQLiteCommand(insert, MainForm.baza.dbConn);
-                tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
-                tableCreation.Parameters.AddWithValue("@opis", opisLokalaArea.Text);
-                tableCreation.Parameters.AddWithValue("@ime", imeTextBox.Text);
-                tableCreation.Parameters.AddWithValue("@kapacitet", (int)kapacitetNumber.Value);
-                tableCreation.Parameters.AddWithValue("@datum", otvaranjeDate.Value.ToString());
-                tableCreation.Parameters.AddWithValue("@cene", ceneCombo.SelectedItem.ToString());
-                tableCreation.Parameters.AddWithValue("@tip_id", tip_id);
-                tableCreation.Parameters.AddWithValue("@pusenje", (pusenjeBtn.Checked) ? 1 : 0);
-                tableCreation.Parameters.AddWithValue("@rezervacija", (rezervacijeBtn.Checked) ? 1 : 0);
-                tableCreation.Parameters.AddWithValue("@hendikepirane", (hendikepBtn.Checked) ? 1 : 0);
-                tableCreation.Parameters.AddWithValue("@alkohol", alkoholCombo.SelectedItem.ToString());
-                tableCreation.ExecuteNonQuery();
-  
+                    SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                    tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
+                    tableCreation.Parameters.AddWithValue("@opis", opisLokalaArea.Text);
+                    tableCreation.Parameters.AddWithValue("@ime", imeTextBox.Text);
+                    tableCreation.Parameters.AddWithValue("@kapacitet", (int)kapacitetNumber.Value);
+                    tableCreation.Parameters.AddWithValue("@datum", otvaranjeDate.Value.ToString());
+                    tableCreation.Parameters.AddWithValue("@cene", ceneCombo.SelectedItem.ToString());
+                    tableCreation.Parameters.AddWithValue("@tip_id", tip_id);
+                    tableCreation.Parameters.AddWithValue("@pusenje", (pusenjeBtn.Checked) ? 1 : 0);
+                    tableCreation.Parameters.AddWithValue("@rezervacija", (rezervacijeBtn.Checked) ? 1 : 0);
+                    tableCreation.Parameters.AddWithValue("@hendikepirane", (hendikepBtn.Checked) ? 1 : 0);
+                    tableCreation.Parameters.AddWithValue("@alkohol", alkoholCombo.SelectedItem.ToString());
+                    tableCreation.ExecuteNonQuery();
 
+                }
                 //tip etikete i jos jes i no opcije
-
-                Program.listaLokala.Add(noviLokal);
                 this.Close();
             }
            
@@ -105,7 +160,7 @@ namespace MapaLokala5._1AU
 
         private void button4_Click(object sender, EventArgs e)
         {
-            NovaEtiketaForm novaEtikaForm = new NovaEtiketaForm(noviLokal.listaEtiketa, listaEtiketa, idTextBox.Text);
+            NovaEtiketaForm novaEtikaForm = new NovaEtiketaForm();
             novaEtikaForm.Show();
         }
 

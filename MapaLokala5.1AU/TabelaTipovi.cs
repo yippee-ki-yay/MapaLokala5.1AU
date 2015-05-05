@@ -23,7 +23,7 @@ namespace MapaLokala5._1AU
 
         private void TabelaTipovi_Load(object sender, EventArgs e)
         {
-            filterCombo.SelectedText = "ime";
+            filterCombo.SelectedItem = "sve";
             reload();
         }
 
@@ -81,7 +81,10 @@ namespace MapaLokala5._1AU
 
             while (r.Read())
             {
-                tipoviTabela.Rows.Add(new object[] { r["id"], r["ime"], r["ikona"], r["opis"] });
+                string link = r["ikona"].ToString();
+                Image img = Image.FromFile(link);
+
+                tipoviTabela.Rows.Add(new object[] { r["id"], r["ime"], img, r["opis"] });
             }
         }
 
@@ -89,14 +92,28 @@ namespace MapaLokala5._1AU
         {
             string id = filterCombo.SelectedItem.ToString();
 
-            string select = "SELECT * FROM tipovi"+ " WHERE " 
-                +id+"=" + "'"+textBox1.Text+"'";
+            string select;
+
+            if (id.Equals("sve"))
+            {
+                select = "SELECT * FROM lokali";
+            }
+            else
+            {
+                select = "SELECT * FROM tipovi" + " WHERE "
+                    + id + "=" + "'" + textBox1.Text + "'";
+            }
 
             SQLiteDataReader r = MainForm.baza.Select(select);
 
             tipoviTabela.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
 
-            tipoviTabela.Rows.Add(new object[] { r["id"], r["ime"], r["ikona"], r["opis"] });
+            while(r.Read())
+            {
+                string link = r["ikona"].ToString();
+                Image img = Image.FromFile(link);
+                tipoviTabela.Rows.Add(new object[] { r["id"], r["ime"], img , r["opis"] });
+            }
             
            
         }

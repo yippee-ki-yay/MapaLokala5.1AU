@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.lokaliDataGrid = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kapacitet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cene = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alkohol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rezervacije = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dodajBtn = new System.Windows.Forms.Button();
+            this.obrisiBtn = new System.Windows.Forms.Button();
+            this.izmeniBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lokaliDataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,33 +68,7 @@
             this.lokaliDataGrid.Size = new System.Drawing.Size(645, 220);
             this.lokaliDataGrid.TabIndex = 0;
             this.lokaliDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(19, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 37);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Dodaj";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(350, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 37);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Obrisi";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(184, 30);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(127, 37);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Izmeni";
-            this.button3.UseVisualStyleBackColor = true;
+            this.lokaliDataGrid.SelectionChanged += new System.EventHandler(this.lokaliDataGrid_SelectionChanged);
             // 
             // Id
             // 
@@ -132,11 +106,41 @@
             this.rezervacije.Name = "rezervacije";
             this.rezervacije.ReadOnly = true;
             // 
+            // dodajBtn
+            // 
+            this.dodajBtn.Location = new System.Drawing.Point(19, 30);
+            this.dodajBtn.Name = "dodajBtn";
+            this.dodajBtn.Size = new System.Drawing.Size(127, 37);
+            this.dodajBtn.TabIndex = 1;
+            this.dodajBtn.Text = "Dodaj";
+            this.dodajBtn.UseVisualStyleBackColor = true;
+            this.dodajBtn.Click += new System.EventHandler(this.dodajBtn_Click);
+            // 
+            // obrisiBtn
+            // 
+            this.obrisiBtn.Location = new System.Drawing.Point(350, 30);
+            this.obrisiBtn.Name = "obrisiBtn";
+            this.obrisiBtn.Size = new System.Drawing.Size(127, 37);
+            this.obrisiBtn.TabIndex = 2;
+            this.obrisiBtn.Text = "Obrisi";
+            this.obrisiBtn.UseVisualStyleBackColor = true;
+            this.obrisiBtn.Click += new System.EventHandler(this.obrisiBtn_Click);
+            // 
+            // izmeniBtn
+            // 
+            this.izmeniBtn.Location = new System.Drawing.Point(184, 30);
+            this.izmeniBtn.Name = "izmeniBtn";
+            this.izmeniBtn.Size = new System.Drawing.Size(127, 37);
+            this.izmeniBtn.TabIndex = 3;
+            this.izmeniBtn.Text = "Izmeni";
+            this.izmeniBtn.UseVisualStyleBackColor = true;
+            this.izmeniBtn.Click += new System.EventHandler(this.izmeniBtn_Click);
+            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.dodajBtn);
+            this.groupBox1.Controls.Add(this.obrisiBtn);
+            this.groupBox1.Controls.Add(this.izmeniBtn);
             this.groupBox1.Location = new System.Drawing.Point(12, 238);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(634, 101);
@@ -156,22 +160,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtriraj";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(350, 38);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 29);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Filtriraj";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(28, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 20);
-            this.textBox1.TabIndex = 1;
-            // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -185,6 +173,23 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(85, 21);
             this.comboBox1.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(28, 43);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(166, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(350, 38);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(96, 29);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Filtriraj";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // PrikazLokalaForm
             // 
@@ -208,9 +213,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView lokaliDataGrid;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button dodajBtn;
+        private System.Windows.Forms.Button obrisiBtn;
+        private System.Windows.Forms.Button izmeniBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kapacitet;

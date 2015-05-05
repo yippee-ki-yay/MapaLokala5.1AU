@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.etiketeTabela = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Boja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox = new System.Windows.Forms.GroupBox();
             this.izmeniBtn = new System.Windows.Forms.Button();
             this.dodajBtn = new System.Windows.Forms.Button();
@@ -40,6 +37,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.filterBtn = new System.Windows.Forms.Button();
             this.filterCombo = new System.Windows.Forms.ComboBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Boja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.etiketeTabela)).BeginInit();
             this.GroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -48,6 +48,7 @@
             // etiketeTabela
             // 
             this.etiketeTabela.AllowUserToAddRows = false;
+            this.etiketeTabela.AllowUserToDeleteRows = false;
             this.etiketeTabela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.etiketeTabela.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -55,25 +56,12 @@
             this.Opis});
             this.etiketeTabela.Location = new System.Drawing.Point(3, 3);
             this.etiketeTabela.Name = "etiketeTabela";
+            this.etiketeTabela.ReadOnly = true;
             this.etiketeTabela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.etiketeTabela.Size = new System.Drawing.Size(343, 221);
             this.etiketeTabela.TabIndex = 0;
             this.etiketeTabela.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.etiketeTabela_CellContentClick);
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // Boja
-            // 
-            this.Boja.HeaderText = "Boja";
-            this.Boja.Name = "Boja";
-            // 
-            // Opis
-            // 
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
+            this.etiketeTabela.SelectionChanged += new System.EventHandler(this.etiketeTabela_SelectionChanged);
             // 
             // GroupBox
             // 
@@ -105,6 +93,7 @@
             this.dodajBtn.TabIndex = 1;
             this.dodajBtn.Text = "Dodaj";
             this.dodajBtn.UseVisualStyleBackColor = true;
+            this.dodajBtn.Click += new System.EventHandler(this.dodajBtn_Click);
             // 
             // obrisiBtn
             // 
@@ -143,6 +132,7 @@
             this.filterBtn.TabIndex = 2;
             this.filterBtn.Text = "Filtriraj";
             this.filterBtn.UseVisualStyleBackColor = true;
+            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
             // 
             // filterCombo
             // 
@@ -158,6 +148,25 @@
             this.filterCombo.Name = "filterCombo";
             this.filterCombo.Size = new System.Drawing.Size(90, 21);
             this.filterCombo.TabIndex = 4;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Boja
+            // 
+            this.Boja.HeaderText = "Boja";
+            this.Boja.Name = "Boja";
+            this.Boja.ReadOnly = true;
+            this.Boja.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Opis
+            // 
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            this.Opis.ReadOnly = true;
             // 
             // TabelaEtiketa
             // 
@@ -181,9 +190,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView etiketeTabela;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Boja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.GroupBox GroupBox;
         private System.Windows.Forms.Button izmeniBtn;
         private System.Windows.Forms.Button dodajBtn;
@@ -192,5 +198,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button filterBtn;
         private System.Windows.Forms.ComboBox filterCombo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Boja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
     }
 }

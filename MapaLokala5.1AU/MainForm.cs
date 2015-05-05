@@ -37,7 +37,7 @@ namespace MapaLokala5._1AU
 
             baza.createTable(@"create table if not exists etikete 
                               (id TEXT PRIMARY KEY, 
-                               boja INT,
+                               boja TEXT,
                                opis TEXT,
                                lokal_id TEXT,
                                FOREIGN KEY(lokal_id) REFERENCES lokali(id))");

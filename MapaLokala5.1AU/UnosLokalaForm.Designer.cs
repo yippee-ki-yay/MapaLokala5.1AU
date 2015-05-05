@@ -63,11 +63,11 @@ namespace MapaLokala5._1AU
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.listaEtiketa = new System.Windows.Forms.ListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.errorIme = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kapacitetNumber)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -414,17 +414,6 @@ namespace MapaLokala5._1AU
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // listaEtiketa
-            // 
-            this.listaEtiketa.FormattingEnabled = true;
-            this.listaEtiketa.ItemHeight = 15;
-            this.listaEtiketa.Location = new System.Drawing.Point(57, 358);
-            this.listaEtiketa.Name = "listaEtiketa";
-            this.listaEtiketa.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listaEtiketa.Size = new System.Drawing.Size(301, 64);
-            this.listaEtiketa.TabIndex = 40;
-            this.listaEtiketa.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button3);
@@ -460,7 +449,7 @@ namespace MapaLokala5._1AU
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.listaEtiketa);
+            this.groupBox5.Controls.Add(this.checkedListBox1);
             this.groupBox5.Controls.Add(this.button4);
             this.groupBox5.Controls.Add(this.ceneCombo);
             this.groupBox5.Controls.Add(this.label12);
@@ -485,6 +474,14 @@ namespace MapaLokala5._1AU
             // errorIme
             // 
             this.errorIme.ContainerControl = this;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(57, 358);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(307, 84);
+            this.checkedListBox1.TabIndex = 39;
             // 
             // UnosLokalaForm
             // 
@@ -522,7 +519,6 @@ namespace MapaLokala5._1AU
         private System.Windows.Forms.ComboBox tipComboBox;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.ListBox listaEtiketa;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
@@ -555,5 +551,6 @@ namespace MapaLokala5._1AU
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ErrorProvider errorIme;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
