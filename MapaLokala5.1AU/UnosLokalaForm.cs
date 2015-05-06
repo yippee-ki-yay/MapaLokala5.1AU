@@ -26,7 +26,7 @@ namespace MapaLokala5._1AU
 
             this.update_id = lokal_id;
 
-               SQLiteDataReader r = MainForm.baza.Select("select * from lokali WHERE id="+update_id);
+               SQLiteDataReader r = MainForm.baza.Select("select * from lokali WHERE id='"+update_id+"'");
 
                 while (r.Read())
                 {
@@ -54,6 +54,8 @@ namespace MapaLokala5._1AU
 
                     alkoholCombo.SelectedItem = r["alkohol"].ToString();
                     ceneCombo.SelectedItem = r["cene"].ToString();
+                    string ss = r["tip_id"].ToString();
+                    tipComboBox.SelectedItem = "878";
 
                 }
         }
@@ -67,7 +69,9 @@ namespace MapaLokala5._1AU
 
         private void populateEtikete()
         {
-             SQLiteDataReader r = MainForm.baza.Select("select id from etikete"); 
+             SQLiteDataReader r = MainForm.baza.Select("select id from etikete");
+
+             checkedListBox1.Items.Clear();
 
              while (r.Read())
              {
@@ -113,7 +117,7 @@ namespace MapaLokala5._1AU
                     tableCreation.Parameters.AddWithValue("@kapacitet", (int)kapacitetNumber.Value);
                     tableCreation.Parameters.AddWithValue("@datum", otvaranjeDate.Value.ToString());
                     tableCreation.Parameters.AddWithValue("@cene", ceneCombo.SelectedItem.ToString());
-                    tableCreation.Parameters.AddWithValue("@tip_id", tip_id);
+                    tableCreation.Parameters.AddWithValue("@tip_id", tipComboBox.SelectedItem.ToString());
                     tableCreation.Parameters.AddWithValue("@pusenje", (pusenjeBtn.Checked) ? 1 : 0);
                     tableCreation.Parameters.AddWithValue("@rezervacija", (rezervacijeBtn.Checked) ? 1 : 0);
                     tableCreation.Parameters.AddWithValue("@hendikepirane", (hendikepBtn.Checked) ? 1 : 0);
@@ -129,13 +133,13 @@ namespace MapaLokala5._1AU
 
         private void UnosLokalaForm_Load(object sender, EventArgs e)
         {
-            string select = @"select ime FROM tipovi";
+            string select = @"select id FROM tipovi";
 
             SQLiteDataReader r = MainForm.baza.Select(select);
 
             while (r.Read())
             {
-                tipComboBox.Items.Add(r["ime"]);
+                tipComboBox.Items.Add(r["id"]);
             }
         }
 
@@ -161,7 +165,8 @@ namespace MapaLokala5._1AU
         private void button4_Click(object sender, EventArgs e)
         {
             NovaEtiketaForm novaEtikaForm = new NovaEtiketaForm();
-            novaEtikaForm.Show();
+            novaEtikaForm.ShowDialog();
+            populateEtikete();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
