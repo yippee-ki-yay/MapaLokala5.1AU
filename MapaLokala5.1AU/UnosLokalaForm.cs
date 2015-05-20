@@ -24,6 +24,8 @@ namespace MapaLokala5._1AU
         {
             InitializeComponent();
 
+            this.ActiveControl = idTextBox;
+
             otvaranjeDate.Format = DateTimePickerFormat.Custom;
             otvaranjeDate.CustomFormat = "dd-MM-yyyy   hh:mm";
 
@@ -36,7 +38,7 @@ namespace MapaLokala5._1AU
                     idTextBox.Text = r["id"].ToString();
                     imeTextBox.Text = r["ime"].ToString();
                     opisLokalaArea.Text = r["opis"].ToString();
-                    kapacitetNumber.Value = (int) r["kapacitet"];
+                    kapacitetNumber.Text =  r["kapacitet"].ToString();
                     string date = r["datum"].ToString();
                     otvaranjeDate.Value = Convert.ToDateTime(date);
 
@@ -67,6 +69,7 @@ namespace MapaLokala5._1AU
         public UnosLokalaForm()
         {
             InitializeComponent();
+            this.ActiveControl = idTextBox;
             imeRex = new Regex("^[A-Za-z_-][A-Za-z0-9_-]*$");
             populateEtikete();
             otvaranjeDate.Format = DateTimePickerFormat.Custom;
@@ -97,9 +100,10 @@ namespace MapaLokala5._1AU
                 sql = "update lokali "
                              + "set id='" + idTextBox.Text +
                               "',opis='" + opisLokalaArea.Text + "', ime='" + imeTextBox.Text +
-                              "',kapacitet='" + (int)kapacitetNumber.Value + "', datum='" + otvaranjeDate.Value.ToString()
+                              "',kapacitet='" + (int)Convert.ToInt32(kapacitetNumber.Text)+ "', datum='" + otvaranjeDate.Value.ToString()
                              + "',pusenje='" + ((pusenjeBtn.Checked) ? 1 : 0) + "', rezervacija='" + ((rezervacijeBtn.Checked) ? 1 : 0)
                              + "',hendikepirane='" + ((hendikepBtn.Checked) ? 1 : 0) + "', alkohol='" + alkoholCombo.SelectedItem.ToString()
+                            //   + "', cene='" + ceneCombo.SelectedItem.ToString()
                              + "' WHERE id='" + update_id + "'";
 
                 SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
@@ -120,7 +124,7 @@ namespace MapaLokala5._1AU
                     tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
                     tableCreation.Parameters.AddWithValue("@opis", opisLokalaArea.Text);
                     tableCreation.Parameters.AddWithValue("@ime", imeTextBox.Text);
-                    tableCreation.Parameters.AddWithValue("@kapacitet", (int)kapacitetNumber.Value);
+                    tableCreation.Parameters.AddWithValue("@kapacitet", Convert.ToInt32(kapacitetNumber.Text));
                     tableCreation.Parameters.AddWithValue("@datum", otvaranjeDate.Value.ToString());
                     tableCreation.Parameters.AddWithValue("@cene", ceneCombo.SelectedItem.ToString());
                     tableCreation.Parameters.AddWithValue("@tip_id", tipComboBox.SelectedItem.ToString());
@@ -236,6 +240,11 @@ namespace MapaLokala5._1AU
         }
 
         private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

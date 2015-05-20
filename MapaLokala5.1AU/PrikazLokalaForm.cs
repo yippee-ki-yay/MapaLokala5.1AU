@@ -66,7 +66,7 @@ namespace MapaLokala5._1AU
             while (r.Read())
             {
                 //why u make me do dis
-                string rerz = (((int)r["rezervacija"]) == 0) ? "Da": "Ne";
+                string rerz = (((int)r["rezervacija"]) == 1) ? "Da": "Ne";
 
                 lokaliDataGrid.Rows.Add(new object[] { r["id"], r["ime"], r["kapacitet"], r["cene"], r["alkohol"], rerz});
             }

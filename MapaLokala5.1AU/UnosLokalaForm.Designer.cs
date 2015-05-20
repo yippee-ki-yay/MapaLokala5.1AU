@@ -46,7 +46,6 @@ namespace MapaLokala5._1AU
             this.imeTextBox = new System.Windows.Forms.TextBox();
             this.alkoholCombo = new System.Windows.Forms.ComboBox();
             this.ceneCombo = new System.Windows.Forms.ComboBox();
-            this.kapacitetNumber = new System.Windows.Forms.NumericUpDown();
             this.otvaranjeDate = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.opisLokalaArea = new System.Windows.Forms.RichTextBox();
@@ -66,10 +65,11 @@ namespace MapaLokala5._1AU
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.errorIme = new System.Windows.Forms.ErrorProvider(this.components);
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.errorIme = new System.Windows.Forms.ErrorProvider(this.components);
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.kapacitetNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kapacitetNumber)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupPusenje.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -93,7 +93,7 @@ namespace MapaLokala5._1AU
             this.button1.Location = new System.Drawing.Point(695, 501);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 44);
-            this.button1.TabIndex = 12;
+            this.button1.TabIndex = 17;
             this.button1.Text = "Potvrdi";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -112,8 +112,8 @@ namespace MapaLokala5._1AU
             this.button3.Location = new System.Drawing.Point(249, 135);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(53, 23);
-            this.button3.TabIndex = 37;
-            this.button3.Text = "Dodaj tip";
+            this.button3.TabIndex = 3;
+            this.button3.Text = "t";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -221,7 +221,7 @@ namespace MapaLokala5._1AU
             this.alkoholCombo.Location = new System.Drawing.Point(262, 27);
             this.alkoholCombo.Name = "alkoholCombo";
             this.alkoholCombo.Size = new System.Drawing.Size(139, 23);
-            this.alkoholCombo.TabIndex = 6;
+            this.alkoholCombo.TabIndex = 7;
             // 
             // ceneCombo
             // 
@@ -235,14 +235,7 @@ namespace MapaLokala5._1AU
             this.ceneCombo.Location = new System.Drawing.Point(262, 74);
             this.ceneCombo.Name = "ceneCombo";
             this.ceneCombo.Size = new System.Drawing.Size(139, 23);
-            this.ceneCombo.TabIndex = 26;
-            // 
-            // kapacitetNumber
-            // 
-            this.kapacitetNumber.Location = new System.Drawing.Point(150, 194);
-            this.kapacitetNumber.Name = "kapacitetNumber";
-            this.kapacitetNumber.Size = new System.Drawing.Size(152, 21);
-            this.kapacitetNumber.TabIndex = 3;
+            this.ceneCombo.TabIndex = 8;
             // 
             // otvaranjeDate
             // 
@@ -250,7 +243,7 @@ namespace MapaLokala5._1AU
             this.otvaranjeDate.Location = new System.Drawing.Point(150, 245);
             this.otvaranjeDate.Name = "otvaranjeDate";
             this.otvaranjeDate.Size = new System.Drawing.Size(152, 21);
-            this.otvaranjeDate.TabIndex = 4;
+            this.otvaranjeDate.TabIndex = 5;
             // 
             // label10
             // 
@@ -268,7 +261,7 @@ namespace MapaLokala5._1AU
             this.opisLokalaArea.Location = new System.Drawing.Point(14, 358);
             this.opisLokalaArea.Name = "opisLokalaArea";
             this.opisLokalaArea.Size = new System.Drawing.Size(288, 144);
-            this.opisLokalaArea.TabIndex = 5;
+            this.opisLokalaArea.TabIndex = 6;
             this.opisLokalaArea.Text = "";
             // 
             // groupBox1
@@ -278,7 +271,7 @@ namespace MapaLokala5._1AU
             this.groupBox1.Location = new System.Drawing.Point(262, 231);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(139, 34);
-            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
@@ -289,7 +282,7 @@ namespace MapaLokala5._1AU
             this.radioButton2.Location = new System.Drawing.Point(97, 11);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(41, 17);
-            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabIndex = 14;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Ne";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -301,7 +294,7 @@ namespace MapaLokala5._1AU
             this.hendikepBtn.Location = new System.Drawing.Point(15, 11);
             this.hendikepBtn.Name = "hendikepBtn";
             this.hendikepBtn.Size = new System.Drawing.Size(41, 17);
-            this.hendikepBtn.TabIndex = 0;
+            this.hendikepBtn.TabIndex = 13;
             this.hendikepBtn.TabStop = true;
             this.hendikepBtn.Text = "Da";
             this.hendikepBtn.UseVisualStyleBackColor = true;
@@ -313,7 +306,7 @@ namespace MapaLokala5._1AU
             this.groupPusenje.Location = new System.Drawing.Point(262, 119);
             this.groupPusenje.Name = "groupPusenje";
             this.groupPusenje.Size = new System.Drawing.Size(139, 34);
-            this.groupPusenje.TabIndex = 7;
+            this.groupPusenje.TabIndex = 9;
             this.groupPusenje.TabStop = false;
             // 
             // radioButton3
@@ -323,7 +316,7 @@ namespace MapaLokala5._1AU
             this.radioButton3.Location = new System.Drawing.Point(97, 11);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(41, 17);
-            this.radioButton3.TabIndex = 1;
+            this.radioButton3.TabIndex = 11;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Ne";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -335,7 +328,7 @@ namespace MapaLokala5._1AU
             this.pusenjeBtn.Location = new System.Drawing.Point(12, 11);
             this.pusenjeBtn.Name = "pusenjeBtn";
             this.pusenjeBtn.Size = new System.Drawing.Size(41, 17);
-            this.pusenjeBtn.TabIndex = 0;
+            this.pusenjeBtn.TabIndex = 10;
             this.pusenjeBtn.TabStop = true;
             this.pusenjeBtn.Text = "Da";
             this.pusenjeBtn.UseVisualStyleBackColor = true;
@@ -347,7 +340,7 @@ namespace MapaLokala5._1AU
             this.groupBox3.Location = new System.Drawing.Point(262, 180);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(139, 34);
-            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabIndex = 100;
             this.groupBox3.TabStop = false;
             // 
             // radioButton5
@@ -357,7 +350,7 @@ namespace MapaLokala5._1AU
             this.radioButton5.Location = new System.Drawing.Point(97, 11);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(41, 17);
-            this.radioButton5.TabIndex = 1;
+            this.radioButton5.TabIndex = 12;
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Ne";
             this.radioButton5.UseVisualStyleBackColor = true;
@@ -369,7 +362,7 @@ namespace MapaLokala5._1AU
             this.rezervacijeBtn.Location = new System.Drawing.Point(12, 11);
             this.rezervacijeBtn.Name = "rezervacijeBtn";
             this.rezervacijeBtn.Size = new System.Drawing.Size(41, 17);
-            this.rezervacijeBtn.TabIndex = 0;
+            this.rezervacijeBtn.TabIndex = 11;
             this.rezervacijeBtn.TabStop = true;
             this.rezervacijeBtn.Text = "Da";
             this.rezervacijeBtn.UseVisualStyleBackColor = true;
@@ -409,13 +402,14 @@ namespace MapaLokala5._1AU
             this.button4.Location = new System.Drawing.Point(136, 312);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(99, 23);
-            this.button4.TabIndex = 10;
+            this.button4.TabIndex = 15;
             this.button4.Text = "Dodaj";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.kapacitetNumber);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.tipComboBox);
             this.groupBox4.Controls.Add(this.label11);
@@ -423,7 +417,6 @@ namespace MapaLokala5._1AU
             this.groupBox4.Controls.Add(this.opisLokalaArea);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.otvaranjeDate);
-            this.groupBox4.Controls.Add(this.kapacitetNumber);
             this.groupBox4.Controls.Add(this.imeTextBox);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label8);
@@ -442,7 +435,7 @@ namespace MapaLokala5._1AU
             this.button2.Location = new System.Drawing.Point(490, 501);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 44);
-            this.button2.TabIndex = 13;
+            this.button2.TabIndex = 17;
             this.button2.Text = "Otkaži";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -471,17 +464,25 @@ namespace MapaLokala5._1AU
             this.groupBox5.Text = "Dodatne informacije";
             this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
-            // errorIme
-            // 
-            this.errorIme.ContainerControl = this;
-            // 
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(57, 358);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(307, 84);
-            this.checkedListBox1.TabIndex = 39;
+            this.checkedListBox1.TabIndex = 16;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
+            // errorIme
+            // 
+            this.errorIme.ContainerControl = this;
+            // 
+            // kapacitetNumber
+            // 
+            this.kapacitetNumber.Location = new System.Drawing.Point(153, 195);
+            this.kapacitetNumber.Name = "kapacitetNumber";
+            this.kapacitetNumber.Size = new System.Drawing.Size(148, 21);
+            this.kapacitetNumber.TabIndex = 36;
             // 
             // UnosLokalaForm
             // 
@@ -496,7 +497,6 @@ namespace MapaLokala5._1AU
             this.Text = "Unos lokala";
             this.Load += new System.EventHandler(this.UnosLokalaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kapacitetNumber)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupPusenje.ResumeLayout(false);
@@ -535,7 +535,6 @@ namespace MapaLokala5._1AU
         private System.Windows.Forms.RichTextBox opisLokalaArea;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker otvaranjeDate;
-        private System.Windows.Forms.NumericUpDown kapacitetNumber;
         private System.Windows.Forms.ComboBox ceneCombo;
         private System.Windows.Forms.ComboBox alkoholCombo;
         private System.Windows.Forms.TextBox imeTextBox;
@@ -552,5 +551,7 @@ namespace MapaLokala5._1AU
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ErrorProvider errorIme;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.TextBox kapacitetNumber;
     }
 }

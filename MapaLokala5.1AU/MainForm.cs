@@ -203,10 +203,26 @@ namespace MapaLokala5._1AU
         {
             new NovaEtiketaForm().Show();
         }
-
+        /// <summary>
+        /// Kada selektujemo node na tree, prodjemo kroz listu ikonica i sleketujemo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            string ime = e.Node.Name;
 
+            foreach (Ikonica i in listaIkonica)
+            {
+                if (i.ime.Equals(ime))
+                {
+                    if (selektovan != null)
+                        selektovan.BorderStyle = BorderStyle.None;
+
+                    i.BorderStyle = BorderStyle.FixedSingle;
+                    selektovan = i;
+                }
+            }
         }
 
         private void nacrtajSliku(string putanja, int x, int y, string ime)
