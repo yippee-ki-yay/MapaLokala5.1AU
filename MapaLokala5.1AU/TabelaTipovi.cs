@@ -45,7 +45,7 @@ namespace MapaLokala5._1AU
 
         private void izbrisiBtn_Click(object sender, EventArgs e)
         {
-            string sqlDelete = "delete from tipovi where id="+idTipa;
+            string sqlDelete = "delete from tipovi where id= '"+idTipa + "'";
 
             SQLiteCommand tableCreation = new SQLiteCommand(sqlDelete, MainForm.baza.dbConn);
             tableCreation.ExecuteNonQuery();
@@ -100,8 +100,8 @@ namespace MapaLokala5._1AU
             }
             else
             {
-                select = "SELECT * FROM tipovi" + " WHERE "
-                    + id + "=" + "'" + textBox1.Text + "'";
+                select = "SELECT * FROM tipovi" + " WHERE '"
+                    + id + "' =" + "'" + textBox1.Text + "'";
             }
 
             SQLiteDataReader r = MainForm.baza.Select(select);

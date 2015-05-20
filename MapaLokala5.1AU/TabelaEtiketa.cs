@@ -28,7 +28,7 @@ namespace MapaLokala5._1AU
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string sqlDelete = "delete from etikete where id=" + idTipa;
+            string sqlDelete = "delete from etikete where id= '" + idTipa+"'";
 
             SQLiteCommand tableCreation = new SQLiteCommand(sqlDelete, MainForm.baza.dbConn);
             tableCreation.ExecuteNonQuery();
@@ -50,9 +50,12 @@ namespace MapaLokala5._1AU
 
             etiketeTabela.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
 
+            int i = 0;
             while (r.Read())
             {
-                etiketeTabela.Rows.Add(new object[] { r["id"], r["boja"], r["opis"] });
+                etiketeTabela.Rows.Add(new object[] { r["id"], "", r["opis"] });
+                etiketeTabela.Rows[i].Cells[1].Style.BackColor = System.Drawing.ColorTranslator.FromHtml(r["boja"].ToString());
+                i++;
             }
         }
 
@@ -86,8 +89,8 @@ namespace MapaLokala5._1AU
             }
             else
             {
-                select = "SELECT * FROM etikete" + " WHERE "
-                + id + "=" + "'" + textBox1.Text + "'";
+                select = "SELECT * FROM etikete" + " WHERE '"
+                + id + "' =" + "'" + textBox1.Text + "'";
             }
 
             SQLiteDataReader r = MainForm.baza.Select(select);

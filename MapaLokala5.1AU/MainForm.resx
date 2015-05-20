@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="pageSetupDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mapaPanel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAzIAAAILCAYAAAAzN6n8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAP+lSURBVHhe7P1HkBxntueJcjGLWfSizWYxi170YsxmMYtZ
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAP+lSURBVHhe7P1HkBxntueJcjGLWfSizWYxi170YsxmMYtZ
         tD1re2bvvZmeaXHvnb73lhYUVWRRs1hFUSxqrSVAAARAgFqCAiC0lgmZAFJrnRkRqRW0Vt87v+P5RXzh
         6R7hHiIzUSw3c8vICNf+ifM/53/+54a+rmYTtva015vejgZz+sS4uXDuVHodGegxia4mc/bUsazvh1Jd
         pqu1Ro7XFHrMXOezv3HOZHdz1rHd8+f7nOpp0euOci62aWuoNCePj5ug5fLlS6a1/pCp7l5jjvZ9X/Ba
@@ -5296,7 +5302,7 @@
         vOQpZXO6GEBMMVpZWInJuhoDkPn/AySIXpQJJO8jAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
 </root>

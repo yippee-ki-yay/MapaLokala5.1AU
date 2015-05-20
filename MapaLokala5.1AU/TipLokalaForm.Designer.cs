@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,7 +40,13 @@
             this.opisTextBox = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.idError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.imeError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ikonicaError = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imeError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ikonicaError)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -98,6 +105,7 @@
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(146, 20);
             this.idTextBox.TabIndex = 5;
+            this.idTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.idTextBox_Validating);
             // 
             // imeTextBox
             // 
@@ -142,6 +150,18 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // idError
+            // 
+            this.idError.ContainerControl = this;
+            // 
+            // imeError
+            // 
+            this.imeError.ContainerControl = this;
+            // 
+            // ikonicaError
+            // 
+            this.ikonicaError.ContainerControl = this;
+            // 
             // TipLokalaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,6 +182,9 @@
             this.Text = "TipLokalaForm";
             this.Load += new System.EventHandler(this.TipLokalaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imeError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ikonicaError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,6 +203,9 @@
         private System.Windows.Forms.RichTextBox opisTextBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ErrorProvider idError;
+        private System.Windows.Forms.ErrorProvider imeError;
+        private System.Windows.Forms.ErrorProvider ikonicaError;
 
     }
 }

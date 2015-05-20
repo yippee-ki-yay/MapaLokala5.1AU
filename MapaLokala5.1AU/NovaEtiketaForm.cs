@@ -40,7 +40,9 @@ namespace MapaLokala5._1AU
                 Int32 iColorInt = Convert.ToInt32(colorCode.Substring(1), 16);
                 Color curveColor = System.Drawing.Color.FromArgb(iColorInt);
 
-                pictureBox1.BackColor = curveColor;
+                pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml(colorCode);
+
+               // pictureBox1.BackColor = curveColor;
                
             }
         }
@@ -90,10 +92,12 @@ namespace MapaLokala5._1AU
                 SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
                 tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
                 tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
-                tableCreation.Parameters.AddWithValue("@boja", colorDialog.Color.ToArgb().ToString());
+                tableCreation.Parameters.AddWithValue("@boja", System.Drawing.ColorTranslator.ToHtml(colorDialog.Color).ToString());
                 tableCreation.Parameters.AddWithValue("@lokal_id", id);
 
                 tableCreation.ExecuteNonQuery();
+
+                System.Console.WriteLine(System.Drawing.ColorTranslator.ToHtml(colorDialog.Color).ToString());
             }
 
             this.Close();

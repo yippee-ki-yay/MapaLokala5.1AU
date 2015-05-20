@@ -24,6 +24,9 @@ namespace MapaLokala5._1AU
         {
             InitializeComponent();
 
+            otvaranjeDate.Format = DateTimePickerFormat.Custom;
+            otvaranjeDate.CustomFormat = "dd-MM-yyyy   hh:mm";
+
             this.update_id = lokal_id;
 
                SQLiteDataReader r = MainForm.baza.Select("select * from lokali WHERE id='"+update_id+"'");
@@ -55,7 +58,8 @@ namespace MapaLokala5._1AU
                     alkoholCombo.SelectedItem = r["alkohol"].ToString();
                     ceneCombo.SelectedItem = r["cene"].ToString();
                     string ss = r["tip_id"].ToString();
-                    tipComboBox.SelectedItem = "878";
+                    
+                //    otvaranjeDate.Text = r["datum"].ToString();
 
                 }
         }
@@ -65,6 +69,8 @@ namespace MapaLokala5._1AU
             InitializeComponent();
             imeRex = new Regex("^[A-Za-z_-][A-Za-z0-9_-]*$");
             populateEtikete();
+            otvaranjeDate.Format = DateTimePickerFormat.Custom;
+            otvaranjeDate.CustomFormat = "dd-MM-yyyy   hh:mm";
         }
 
         private void populateEtikete()
@@ -88,12 +94,12 @@ namespace MapaLokala5._1AU
 
             if (update_id != null)
             {
-                sql = "update etikete "
+                sql = "update lokali "
                              + "set id='" + idTextBox.Text +
                               "',opis='" + opisLokalaArea.Text + "', ime='" + imeTextBox.Text +
                               "',kapacitet='" + (int)kapacitetNumber.Value + "', datum='" + otvaranjeDate.Value.ToString()
-                             + "',opis='" + opisLokalaArea.Text + "', ime='" + imeTextBox.Text 
-                             + "',opis='" + opisLokalaArea.Text + "', ime='" + imeTextBox.Text 
+                             + "',pusenje='" + ((pusenjeBtn.Checked) ? 1 : 0) + "', rezervacija='" + ((rezervacijeBtn.Checked) ? 1 : 0)
+                             + "',hendikepirane='" + ((hendikepBtn.Checked) ? 1 : 0) + "', alkohol='" + alkoholCombo.SelectedItem.ToString()
                              + "' WHERE id='" + update_id + "'";
 
                 SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
@@ -125,10 +131,10 @@ namespace MapaLokala5._1AU
                     tableCreation.ExecuteNonQuery();
 
                 }
-                //tip etikete i jos jes i no opcije
-                this.Close();
+                
             }
-           
+
+            this.Close();
         }
 
         private void UnosLokalaForm_Load(object sender, EventArgs e)
@@ -213,7 +219,7 @@ namespace MapaLokala5._1AU
 
         private void imeTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (imeRex.Match(imeTextBox.Text).Success)
+          /*  if (imeRex.Match(imeTextBox.Text).Success)
             {
                 errorIme.SetError(imeTextBox, "");
             }
@@ -221,7 +227,7 @@ namespace MapaLokala5._1AU
             {
                 errorIme.SetError(imeTextBox, "Ime mora poceti sa slovom");
                 formIsValid = false;
-            }
+            }*/
         }
 
         private void button2_Click(object sender, EventArgs e)

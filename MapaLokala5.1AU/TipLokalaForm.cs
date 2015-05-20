@@ -22,6 +22,7 @@ namespace MapaLokala5._1AU
         private Image img = null;
         private string filename = null;
         private string update_id;
+        private bool isValid = true;
 
         public string tip_id
         {
@@ -86,37 +87,83 @@ namespace MapaLokala5._1AU
         {
             string sql;
 
-            if (update_id != null)
-            {
-                sql = "update tipovi "
-                             +"set id='"+idTextBox.Text+ "', ime='"+ imeTextBox.Text
-                              +"',opis='" + opisTextBox.Text + "', ikona='"+filename
-                             +"' WHERE id='" + update_id+ "'";
+            if (isImeUneto() && isIdUneto())
+                isValid = true;
 
-                SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
-                tableCreation.ExecuteNonQuery();
-            }
-            else
+            if (isValid == true)
             {
-                sql = @"insert into tipovi
+                if (update_id != null)
+                {
+                    sql = "update tipovi "
+                                 + "set id='" + idTextBox.Text + "', ime='" + imeTextBox.Text
+                                  + "',opis='" + opisTextBox.Text + "', ikona='" + filename
+                                 + "' WHERE id='" + update_id + "'";
+
+                    SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                    tableCreation.ExecuteNonQuery();
+                }
+                else
+                {
+                    sql = @"insert into tipovi
                                   (id,ime, opis, ikona)
                                   VALUES (@id, @ime, @opis, @ikona)";
 
-                SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
-                tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
-                tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
-                tableCreation.Parameters.AddWithValue("@ime", imeTextBox.Text);
-                tableCreation.Parameters.AddWithValue("@ikona", filename);
+                    SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                    tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
+                    tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
+                    tableCreation.Parameters.AddWithValue("@ime", imeTextBox.Text);
+                    tableCreation.Parameters.AddWithValue("@ikona", filename);
 
-                tableCreation.ExecuteNonQuery();
+                    tableCreation.ExecuteNonQuery();
+                }
+                this.Close();
             }
-
-            this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void idTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(idTextBox.Text))
+            {
+                isValid = false;
+                idError.SetError(idTextBox, "Morate uneti id");
+            }
+            else
+                idError.SetError(idTextBox, "");
+        }
+
+        private bool isIdUneto()
+        {
+            if (string.IsNullOrWhiteSpace(idTextBox.Text))
+            {
+                isValid = false;
+                idError.SetError(idTextBox, "Morate uneti id");
+                return false;
+            }
+            else
+            {
+                idError.SetError(idTextBox, "");
+                return true;
+            }
+        }
+
+        private bool isImeUneto()
+        {
+            if (string.IsNullOrWhiteSpace(imeTextBox.Text))
+            {
+                isValid = false;
+                imeError.SetError(imeTextBox, "Morate uneti ime");
+                return false;
+            }
+            else
+            {
+                imeError.SetError(imeTextBox, "");
+                return true;
+            }
         }
     }
 }

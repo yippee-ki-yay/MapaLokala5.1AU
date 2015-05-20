@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,27 +37,17 @@
             this.lokaliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noviLokalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelaLokalaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaEtiketaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelaLokalaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelaTipovaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelaEtiketaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drvo = new System.Windows.Forms.TreeView();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.mapaPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(462, 399);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // menuStrip1
             // 
@@ -116,16 +105,23 @@
             // noviLokalToolStripMenuItem
             // 
             this.noviLokalToolStripMenuItem.Name = "noviLokalToolStripMenuItem";
-            this.noviLokalToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.noviLokalToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.noviLokalToolStripMenuItem.Text = "Novi lokal";
             this.noviLokalToolStripMenuItem.Click += new System.EventHandler(this.noviLokalToolStripMenuItem_Click);
             // 
             // tabelaLokalaToolStripMenuItem
             // 
             this.tabelaLokalaToolStripMenuItem.Name = "tabelaLokalaToolStripMenuItem";
-            this.tabelaLokalaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tabelaLokalaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.tabelaLokalaToolStripMenuItem.Text = "Novi tip";
             this.tabelaLokalaToolStripMenuItem.Click += new System.EventHandler(this.tabelaLokalaToolStripMenuItem_Click);
+            // 
+            // novaEtiketaToolStripMenuItem
+            // 
+            this.novaEtiketaToolStripMenuItem.Name = "novaEtiketaToolStripMenuItem";
+            this.novaEtiketaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.novaEtiketaToolStripMenuItem.Text = "Nova etiketa";
+            this.novaEtiketaToolStripMenuItem.Click += new System.EventHandler(this.novaEtiketaToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -137,12 +133,26 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.helpToolStripMenuItem.Text = "Prikaži";
             // 
-            // treeView1
+            // tabelaLokalaToolStripMenuItem1
             // 
-            this.treeView1.Location = new System.Drawing.Point(487, 30);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(148, 399);
-            this.treeView1.TabIndex = 4;
+            this.tabelaLokalaToolStripMenuItem1.Name = "tabelaLokalaToolStripMenuItem1";
+            this.tabelaLokalaToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.tabelaLokalaToolStripMenuItem1.Text = "Tabela lokala";
+            this.tabelaLokalaToolStripMenuItem1.Click += new System.EventHandler(this.tabelaLokalaToolStripMenuItem1_Click);
+            // 
+            // tabelaTipovaToolStripMenuItem
+            // 
+            this.tabelaTipovaToolStripMenuItem.Name = "tabelaTipovaToolStripMenuItem";
+            this.tabelaTipovaToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.tabelaTipovaToolStripMenuItem.Text = "Tabela tipova";
+            this.tabelaTipovaToolStripMenuItem.Click += new System.EventHandler(this.tabelaTipovaToolStripMenuItem_Click);
+            // 
+            // tabelaEtiketaToolStripMenuItem
+            // 
+            this.tabelaEtiketaToolStripMenuItem.Name = "tabelaEtiketaToolStripMenuItem";
+            this.tabelaEtiketaToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.tabelaEtiketaToolStripMenuItem.Text = "Tabela etiketa";
+            this.tabelaEtiketaToolStripMenuItem.Click += new System.EventHandler(this.tabelaEtiketaToolStripMenuItem_Click);
             // 
             // pomoćToolStripMenuItem
             // 
@@ -150,47 +160,45 @@
             this.pomoćToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.pomoćToolStripMenuItem.Text = "Pomoć";
             // 
-            // novaEtiketaToolStripMenuItem
+            // drvo
             // 
-            this.novaEtiketaToolStripMenuItem.Name = "novaEtiketaToolStripMenuItem";
-            this.novaEtiketaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.novaEtiketaToolStripMenuItem.Text = "Nova etiketa";
-            this.novaEtiketaToolStripMenuItem.Click += new System.EventHandler(this.novaEtiketaToolStripMenuItem_Click);
+            this.drvo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.drvo.Location = new System.Drawing.Point(487, 30);
+            this.drvo.Name = "drvo";
+            this.drvo.ShowRootLines = false;
+            this.drvo.Size = new System.Drawing.Size(148, 399);
+            this.drvo.TabIndex = 4;
+            this.drvo.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.drvo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.drvo_MouseDoubleClick);
+            this.drvo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.drvo_MouseDown);
+            this.drvo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.drvo_MouseMove);
             // 
-            // tabelaLokalaToolStripMenuItem1
+            // mapaPanel
             // 
-            this.tabelaLokalaToolStripMenuItem1.Name = "tabelaLokalaToolStripMenuItem1";
-            this.tabelaLokalaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.tabelaLokalaToolStripMenuItem1.Text = "Tabela lokala";
-            this.tabelaLokalaToolStripMenuItem1.Click += new System.EventHandler(this.tabelaLokalaToolStripMenuItem1_Click);
-            // 
-            // tabelaTipovaToolStripMenuItem
-            // 
-            this.tabelaTipovaToolStripMenuItem.Name = "tabelaTipovaToolStripMenuItem";
-            this.tabelaTipovaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.tabelaTipovaToolStripMenuItem.Text = "Tabela tipova";
-            this.tabelaTipovaToolStripMenuItem.Click += new System.EventHandler(this.tabelaTipovaToolStripMenuItem_Click);
-            // 
-            // tabelaEtiketaToolStripMenuItem
-            // 
-            this.tabelaEtiketaToolStripMenuItem.Name = "tabelaEtiketaToolStripMenuItem";
-            this.tabelaEtiketaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.tabelaEtiketaToolStripMenuItem.Text = "Tabela etiketa";
-            this.tabelaEtiketaToolStripMenuItem.Click += new System.EventHandler(this.tabelaEtiketaToolStripMenuItem_Click);
+            this.mapaPanel.AllowDrop = true;
+            this.mapaPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mapaPanel.BackgroundImage")));
+            this.mapaPanel.Location = new System.Drawing.Point(0, 27);
+            this.mapaPanel.Name = "mapaPanel";
+            this.mapaPanel.Size = new System.Drawing.Size(471, 402);
+            this.mapaPanel.TabIndex = 5;
+            this.mapaPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.mapaPanel_DragDrop);
+            this.mapaPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.mapaPanel_DragEnter);
+            this.mapaPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mapaPanel_MouseClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 455);
-            this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.mapaPanel);
+            this.Controls.Add(this.drvo);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Evidencija lokala";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -200,7 +208,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -210,12 +217,14 @@
         private System.Windows.Forms.ToolStripMenuItem noviLokalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabelaLokalaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView drvo;
         private System.Windows.Forms.ToolStripMenuItem pomoćToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novaEtiketaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabelaLokalaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tabelaTipovaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabelaEtiketaToolStripMenuItem;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
+        private System.Windows.Forms.Panel mapaPanel;
     }
 }
 
