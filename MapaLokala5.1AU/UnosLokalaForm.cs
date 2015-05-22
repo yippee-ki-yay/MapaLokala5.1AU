@@ -57,13 +57,19 @@ namespace MapaLokala5._1AU
                     else
                         radioButton2.Checked = true;
 
+                    //alkoholCombo.Items.Add("alkohola uvek");
+
                     alkoholCombo.SelectedItem = r["alkohol"].ToString();
+                    //alkoholCombo.SelectedItem = "alkohola uvek";
                     ceneCombo.SelectedItem = r["cene"].ToString();
                     string ss = r["tip_id"].ToString();
-                    
-                //    otvaranjeDate.Text = r["datum"].ToString();
+
+                    populateTipovi();
+
+                    tipComboBox.SelectedItem = r["tip_id"].ToString();
 
                 }
+                populateEtikete();
         }
 
         public UnosLokalaForm()
@@ -82,9 +88,30 @@ namespace MapaLokala5._1AU
 
              checkedListBox1.Items.Clear();
 
+             bool update = false;
+
+             //ako je update i chekiraj one etikete koje su kod tog lokala
+             if (update_id != "" || update_id != null)
+             {
+                 update = true;
+             }
+
+             SQLiteDataReader rr;
+             bool checks= false;
+
+            //dok popunjavamo, ako je ta trenutna etiketa i u tabeli etiketalokala
+            //i pripada nasem lokalu ona je chekiramo true
              while (r.Read())
              {
-                 checkedListBox1.Items.Add(r["id"], false);
+                 if (update)
+                 {
+                     rr = MainForm.baza.Select(@"SELECT etiketa_id FROM EtiketeZaLokale
+                                                     WHERE lokal_id ='" + update_id + "'"
+                                                     + "AND etiketa_id ='" + r["id"].ToString() + "'");
+                     checks = rr.Read();
+                 }
+
+                 checkedListBox1.Items.Add(r["id"].ToString(), checks);
              }
         }
 
@@ -103,7 +130,7 @@ namespace MapaLokala5._1AU
                               "',kapacitet='" + (int)Convert.ToInt32(kapacitetNumber.Text)+ "', datum='" + otvaranjeDate.Value.ToString()
                              + "',pusenje='" + ((pusenjeBtn.Checked) ? 1 : 0) + "', rezervacija='" + ((rezervacijeBtn.Checked) ? 1 : 0)
                              + "',hendikepirane='" + ((hendikepBtn.Checked) ? 1 : 0) + "', alkohol='" + alkoholCombo.SelectedItem.ToString()
-                            //   + "', cene='" + ceneCombo.SelectedItem.ToString()
+                               + "', cene='" + ceneCombo.SelectedItem.ToString() + "', tip_id='" + tipComboBox.SelectedItem.ToString()
                              + "' WHERE id='" + update_id + "'";
 
                 SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
@@ -114,17 +141,25 @@ namespace MapaLokala5._1AU
                 if (formIsValid == true)
                 {
 
+                    int n;
+                    bool isNum = int.TryParse(kapacitetNumber.Text, out n);
+
+                    saveEtikete();
+
                     sql = @"insert into lokali
                                   (id, opis, ime, kapacitet, datum, cene, alkohol, pusenje, rezervacija,
-                                             hendikepirane, tip_id)
+                                             hendikepirane, tip_id, X, Y)
                                   VALUES (@id, @opis, @ime, @kapacitet, @datum, @cene, 
-                                         @alkohol, @pusenje, @rezervacija, @hendikepirane, @tip_id)";
+                                         @alkohol, @pusenje, @rezervacija, @hendikepirane, @tip_id, @X, @Y)";
+
+                    
+
 
                     SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
                     tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
                     tableCreation.Parameters.AddWithValue("@opis", opisLokalaArea.Text);
                     tableCreation.Parameters.AddWithValue("@ime", imeTextBox.Text);
-                    tableCreation.Parameters.AddWithValue("@kapacitet", Convert.ToInt32(kapacitetNumber.Text));
+                    tableCreation.Parameters.AddWithValue("@kapacitet", n);
                     tableCreation.Parameters.AddWithValue("@datum", otvaranjeDate.Value.ToString());
                     tableCreation.Parameters.AddWithValue("@cene", ceneCombo.SelectedItem.ToString());
                     tableCreation.Parameters.AddWithValue("@tip_id", tipComboBox.SelectedItem.ToString());
@@ -132,6 +167,8 @@ namespace MapaLokala5._1AU
                     tableCreation.Parameters.AddWithValue("@rezervacija", (rezervacijeBtn.Checked) ? 1 : 0);
                     tableCreation.Parameters.AddWithValue("@hendikepirane", (hendikepBtn.Checked) ? 1 : 0);
                     tableCreation.Parameters.AddWithValue("@alkohol", alkoholCombo.SelectedItem.ToString());
+                    tableCreation.Parameters.AddWithValue("@X", -1); //kad napravimo novi lokal nema lokaciju
+                    tableCreation.Parameters.AddWithValue("@Y", -1);
                     tableCreation.ExecuteNonQuery();
 
                 }
@@ -141,17 +178,58 @@ namespace MapaLokala5._1AU
             this.Close();
         }
 
+
+        /*
+         * Sacuvamo u bazi sa kojim svim etiketama je povezan lokal
+         */
+        private void saveEtikete()
+        {
+            for (int i = 0; i < checkedListBox1.Items.Count; ++i)
+            {
+                //ako je ta etiketa cekirana povezi sa tim lokalom
+                if (checkedListBox1.GetItemChecked(i))
+                {
+
+                    string sql = @"INSERT INTO EtiketeZaLokale
+                                  (lokal_id, etiketa_id)
+                                  VALUES (@lid, @eid)";
+
+                    SQLiteCommand saveEtikete = new SQLiteCommand(sql, MainForm.baza.dbConn);
+                    saveEtikete.Parameters.AddWithValue("@lid", idTextBox.Text);
+                    saveEtikete.Parameters.AddWithValue("@eid", checkedListBox1.Items[i].ToString());
+                    saveEtikete.ExecuteNonQuery();
+                }
+                    
+            }
+        }
+
         private void UnosLokalaForm_Load(object sender, EventArgs e)
         {
+          //  populateTipovi();
+            populateEtikete();
+        }
+
+        /*
+         * Popunjava onaj combobox sa tipovima
+         */
+        private void populateTipovi()
+        {
+            //posto koristimo svaki put kad se nesto izmeni
+            //obrisemo sve, pa onda dodamo nove podatke
+            tipComboBox.Items.Clear();
+
             string select = @"select id FROM tipovi";
 
             SQLiteDataReader r = MainForm.baza.Select(select);
 
             while (r.Read())
             {
-                tipComboBox.Items.Add(r["id"]);
+                tipComboBox.Items.Add(r["id"].ToString());
             }
+
+            
         }
+
 
         private void label12_Click(object sender, EventArgs e)
         {
@@ -167,8 +245,8 @@ namespace MapaLokala5._1AU
         {
             TipLokalaForm noviLokalForm = new TipLokalaForm(noviLokal.tipLokala, tipComboBox);
             var result = noviLokalForm.ShowDialog();
-          
-                tip_id = noviLokalForm.tip_id;
+            tip_id = noviLokalForm.tip_id;
+            populateTipovi();
 
         }
 

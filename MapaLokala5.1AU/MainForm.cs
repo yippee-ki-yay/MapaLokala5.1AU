@@ -46,9 +46,8 @@ namespace MapaLokala5._1AU
             baza.createTable(@"create table if not exists etikete 
                               (id TEXT PRIMARY KEY, 
                                boja TEXT,
-                               opis TEXT,
-                               lokal_id TEXT,
-                               FOREIGN KEY(lokal_id) REFERENCES lokali(id))");
+                               opis TEXT
+                             )");
 
             baza.createTable(@"create table if not exists tipovi 
                               (id TEXT PRIMARY KEY,
@@ -56,10 +55,19 @@ namespace MapaLokala5._1AU
                                ikona TEXT,
                                opis TEXT
                                )");
+            
+            baza.createTable(@"CREATE TABLE IF NOT EXISTS EtiketeZaLokale
+                               (id INTEGER PRIMARY KEY,
+                               lokal_id TEXT,
+                               etiketa_id TEXT,
+                               FOREIGN KEY(lokal_id) REFERENCES lokali(id),
+                               FOREIGN KEY(etiketa_id) REFERENCES etikete(id)
+                                )");
 
            // baza.Add("insert into highscores (name, score) values ('Me', 3000)");
 
             populateTree();
+            populateMap();
 
         }
         /*
@@ -119,10 +127,10 @@ namespace MapaLokala5._1AU
 
             while (r.Read())
             {
-                int? x = (int)r["X"];
-                int? y = (int)r["Y"];
+                int x = (int)r["X"];
+                int y = (int)r["Y"];
 
-                if (x != null && y != null) //ako su mu x,y null znaci da lokal nije prikazan na mapi
+                if (x != -1 && y != -1) //ako su mu x,y -1 znaci da lokal nije prikazan na mapi
                 {
                     //uzmemo iz tabele tipovi ikonu, koja je povezana sa nasim lokalom da mozemo prikazati sliku lokala
                     string sql = "SELECT ikona FROM tipovi WHERE id=@tip_id";
@@ -278,11 +286,11 @@ namespace MapaLokala5._1AU
                 prevuceni.ForeColor = Color.Gray;
                 
 
-              /*  string sql = "UPDATE lokali SET X = @xxx, Y = @yyy";
+                string sql = "UPDATE lokali SET X = @xxx, Y = @yyy";
                 SQLiteCommand pozicijeCommand = new SQLiteCommand(sql, MainForm.baza.dbConn);
                 pozicijeCommand.Parameters.AddWithValue("@xxx", x);
                 pozicijeCommand.Parameters.AddWithValue("@yyy", y);
-                pozicijeCommand.ExecuteReader();*/
+                pozicijeCommand.ExecuteReader();
 
 
             }
@@ -394,6 +402,7 @@ namespace MapaLokala5._1AU
         {
             if(selektovan != null)
                 selektovan.BorderStyle = BorderStyle.None;
+            
         }
 
         private class Ikonica : PictureBox
@@ -402,6 +411,17 @@ namespace MapaLokala5._1AU
             {
                 get;
                 set;
+            }
+           
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.E)
+            {
+
+                selektovan.Location = new Point(-300, -400);
+                selektovan.Refresh();
             }
         }
     }

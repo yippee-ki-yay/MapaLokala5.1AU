@@ -86,14 +86,13 @@ namespace MapaLokala5._1AU
             {
 
                 sql = @"insert into etikete
-                                  (id,opis, boja, lokal_id)
-                                  VALUES (@id, @opis, @boja, @lokal_id)";
+                                  (id,opis, boja)
+                                  VALUES (@id, @opis, @boja)";
 
                 SQLiteCommand tableCreation = new SQLiteCommand(sql, MainForm.baza.dbConn);
                 tableCreation.Parameters.AddWithValue("@id", idTextBox.Text);
                 tableCreation.Parameters.AddWithValue("@opis", opisTextBox.Text);
                 tableCreation.Parameters.AddWithValue("@boja", System.Drawing.ColorTranslator.ToHtml(colorDialog.Color).ToString());
-                tableCreation.Parameters.AddWithValue("@lokal_id", id);
 
                 tableCreation.ExecuteNonQuery();
 

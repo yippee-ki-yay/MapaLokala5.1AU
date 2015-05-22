@@ -63,12 +63,12 @@ namespace MapaLokala5._1AU
             this.label12 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.kapacitetNumber = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.errorIme = new System.Windows.Forms.ErrorProvider(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.kapacitetNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupPusenje.SuspendLayout();
@@ -113,7 +113,7 @@ namespace MapaLokala5._1AU
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(53, 23);
             this.button3.TabIndex = 3;
-            this.button3.Text = "t";
+            this.button3.Text = "Dodaj";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -430,6 +430,13 @@ namespace MapaLokala5._1AU
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Osnovni podaci";
             // 
+            // kapacitetNumber
+            // 
+            this.kapacitetNumber.Location = new System.Drawing.Point(153, 195);
+            this.kapacitetNumber.Name = "kapacitetNumber";
+            this.kapacitetNumber.Size = new System.Drawing.Size(148, 21);
+            this.kapacitetNumber.TabIndex = 36;
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(490, 501);
@@ -476,13 +483,6 @@ namespace MapaLokala5._1AU
             // errorIme
             // 
             this.errorIme.ContainerControl = this;
-            // 
-            // kapacitetNumber
-            // 
-            this.kapacitetNumber.Location = new System.Drawing.Point(153, 195);
-            this.kapacitetNumber.Name = "kapacitetNumber";
-            this.kapacitetNumber.Size = new System.Drawing.Size(148, 21);
-            this.kapacitetNumber.TabIndex = 36;
             // 
             // UnosLokalaForm
             // 
