@@ -19,6 +19,7 @@ namespace MapaLokala5._1AU
         public PrikazLokalaForm()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -66,7 +67,7 @@ namespace MapaLokala5._1AU
             while (r.Read())
             {
                 //why u make me do dis
-                string rerz = (((int)r["rezervacija"]) == 1) ? "Da": "Ne";
+                string rerz = (((int)r["rezervacija"]) == 0) ? "Da": "Ne";
 
                 lokaliDataGrid.Rows.Add(new object[] { r["id"], r["ime"], r["kapacitet"], r["cene"], r["alkohol"], rerz});
             }
@@ -85,17 +86,47 @@ namespace MapaLokala5._1AU
 
             string select;
 
-            if (id.Equals("sve"))
+            if (textBox1.Text != "")
             {
-                select = "SELECT * FROM lokali";
+                if (id.Equals(" "))
+                {
+
+                    select = "SELECT * FROM lokali WHERE"
+                         + " id =" + "'" + textBox1.Text + "' OR"
+                         + " ime =" + "'" + textBox1.Text + "' OR"
+                         + " kapacitet =" + "'" + textBox1.Text + "' OR"
+                         + " alkohol =" + "'" + textBox1.Text + "' OR"
+                         + " cene =" + "'" + textBox1.Text + "'";
+                }
+                else
+                {
+                    select = "SELECT * FROM lokali" + " WHERE "
+                    + id + "=" + "'" + textBox1.Text + "'";
+                }
+
+                SQLiteDataReader r = MainForm.baza.Select(select);
+
+                lokaliDataGrid.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
+
+                while (r.Read())
+                {
+                    //why u make me do dis
+                    string rerz = (((int)r["rezervacija"]) == 0) ? "Da" : "Ne";
+
+                    lokaliDataGrid.Rows.Add(new object[] { r["id"], r["ime"], r["kapacitet"], r["cene"], r["alkohol"], rerz });
+                }
             }
-            else
-            {
-                select = "SELECT * FROM lokali" + " WHERE "
-                + id + "=" + "'" + textBox1.Text + "'";
-            }
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string select = "SELECT * FROM lokali";
 
             SQLiteDataReader r = MainForm.baza.Select(select);
+
+            comboBox1.SelectedIndex = 0;
+            textBox1.Text = "";
 
             lokaliDataGrid.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
 
@@ -106,7 +137,6 @@ namespace MapaLokala5._1AU
 
                 lokaliDataGrid.Rows.Add(new object[] { r["id"], r["ime"], r["kapacitet"], r["cene"], r["alkohol"], rerz });
             }
-            
         }
 
     }

@@ -13,9 +13,6 @@ namespace MapaLokala5._1AU
 {
     partial class TipLokalaForm : Form
     {
-        /*Za svaki input box potencijalni alertovi*/
-
-
         private OpenFileDialog ikonicaDijalog = new OpenFileDialog();
         private TipLokala tipLokala = null;
         private ComboBox tipComboBox = null;
@@ -23,6 +20,7 @@ namespace MapaLokala5._1AU
         private string filename = null;
         private string update_id;
         private bool isValid = true;
+        private bool iconLoad = false;
 
         public string tip_id
         {
@@ -37,7 +35,7 @@ namespace MapaLokala5._1AU
 
             update_id = id;
 
-                SQLiteDataReader r = MainForm.baza.Select("select * from tipovi WHERE id="+id);
+                SQLiteDataReader r = MainForm.baza.Select("select * from tipovi WHERE id='"+id+"'");
 
                 while (r.Read())
                 {
@@ -74,6 +72,7 @@ namespace MapaLokala5._1AU
                 img = new Bitmap(filename);
                 pictureBox1.BackgroundImage = img;
                 pictureBox1.Show();
+                iconLoad = true;
 
             }
         }
@@ -87,8 +86,35 @@ namespace MapaLokala5._1AU
         {
             string sql;
 
-            if (isImeUneto() && isIdUneto())
-                isValid = true;
+            if (idTextBox.Text == "")
+            {
+                idError.SetError(idTextBox, "Morate uneti oznaku tipa");
+                isValid = false;
+            }
+            else if (update_id == null)
+            {
+                SQLiteDataReader r = MainForm.baza.Select
+                         ("SELECT id FROM tipovi WHERE id='" + idTextBox.Text + "'");
+
+                //ako vec postoji sa ovim id
+                if (r.Read())
+                {
+                    idError.SetError(idTextBox, "Vec postoji tip sa ovom oznakom, promenite naziv");
+                    isValid = false;
+                }
+            }
+
+            if (imeTextBox.Text == "")
+            {
+                idError.SetError(imeTextBox, "Morate uneti ime tipa");
+                isValid = false;
+            }
+
+            //default vrednost ikonice
+            if (iconLoad == false)
+            {
+                filename = @"C:\\Users\\korisnik\\Documents\\Visual Studio 2012\\Projects\\MapaLokala5.1AU\\MapaLokala5.1AU\\tipIcons\\1.png";
+            }
 
             if (isValid == true)
             {
@@ -163,6 +189,24 @@ namespace MapaLokala5._1AU
             {
                 imeError.SetError(imeTextBox, "");
                 return true;
+            }
+        }
+
+        private void idTextBox_Leave(object sender, EventArgs e)
+        {
+            if (idTextBox.Text != "")
+            {
+                idError.SetError(idTextBox, "");
+                isValid = true;
+            }
+        }
+
+        private void imeTextBox_Leave(object sender, EventArgs e)
+        {
+            if (imeTextBox.Text != "")
+            {
+                imeError.SetError(imeTextBox, "");
+                isValid = true;
             }
         }
     }

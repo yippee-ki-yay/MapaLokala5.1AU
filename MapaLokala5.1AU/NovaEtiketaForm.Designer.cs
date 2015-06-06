@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,7 +38,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.idError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.bojaError = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bojaError)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -84,7 +89,7 @@
             this.button1.Location = new System.Drawing.Point(99, 80);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Izaberi boju";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -94,14 +99,15 @@
             this.idTextBox.Location = new System.Drawing.Point(99, 32);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(153, 20);
-            this.idTextBox.TabIndex = 5;
+            this.idTextBox.TabIndex = 1;
+            this.idTextBox.Leave += new System.EventHandler(this.idTextBox_Leave);
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(188, 254);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
+            this.button2.TabIndex = 4;
             this.button2.Text = "Potvrdi";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -119,10 +125,18 @@
             this.button3.Location = new System.Drawing.Point(33, 254);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
+            this.button3.TabIndex = 5;
             this.button3.Text = "Otkaži";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // idError
+            // 
+            this.idError.ContainerControl = this;
+            // 
+            // bojaError
+            // 
+            this.bojaError.ContainerControl = this;
             // 
             // NovaEtiketaForm
             // 
@@ -142,6 +156,8 @@
             this.Text = "Nova etiketa";
             this.Load += new System.EventHandler(this.NovaEtiketaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bojaError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,6 +174,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ErrorProvider idError;
+        private System.Windows.Forms.ErrorProvider bojaError;
 
     }
 }

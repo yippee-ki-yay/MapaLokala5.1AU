@@ -19,6 +19,7 @@ namespace MapaLokala5._1AU
         public TabelaEtiketa()
         {
             InitializeComponent();
+            filterCombo.SelectedIndex = 0;
         }
 
         private void TabelaEtiketa_Load(object sender, EventArgs e)
@@ -83,23 +84,55 @@ namespace MapaLokala5._1AU
 
             string select;
 
-            if (id.Equals("sve"))
+            if (textBox1.Text != "")
             {
-                select = "SELECT * FROM etikete";
-            }
-            else
-            {
-                select = "SELECT * FROM etikete" + " WHERE '"
-                + id + "' =" + "'" + textBox1.Text + "'";
-            }
 
-            SQLiteDataReader r = MainForm.baza.Select(select);
+                if (id.Equals("sve"))
+                {
+                    select = "SELECT * FROM etikete WHERE"
+                        + " id =" + "'" + textBox1.Text + "' OR"
+                        + " boja =" + "'" + textBox1.Text + "' OR"
+                        + " opis =" + "'" + textBox1.Text + "'";
+                }
+                else
+                {
+                    select = "SELECT * FROM etikete" + " WHERE "
+                    + id + " =" + "'" + textBox1.Text + "'";
+                }
+
+
+                SQLiteDataReader r = MainForm.baza.Select(select);
+
+                etiketeTabela.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
+
+                int i = 0;
+                while (r.Read())
+                {
+                    etiketeTabela.Rows.Add(new object[] { r["id"], "", r["opis"] });
+                    etiketeTabela.Rows[i].Cells[1].Style.BackColor = System.Drawing.ColorTranslator.FromHtml(r["boja"].ToString());
+                    i++;
+                }
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string s = "SELECT * FROM etikete";
+
+            SQLiteDataReader r = MainForm.baza.Select(s);
+
+            filterCombo.SelectedIndex = 0;
+            textBox1.Text = "";
 
             etiketeTabela.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
 
-            while(r.Read())
-                etiketeTabela.Rows.Add(new object[] { r["id"], r["boja"], r["opis"] });
-            
+            int i = 0;
+            while (r.Read())
+            {
+                etiketeTabela.Rows.Add(new object[] { r["id"], "", r["opis"] });
+                etiketeTabela.Rows[i].Cells[1].Style.BackColor = System.Drawing.ColorTranslator.FromHtml(r["boja"].ToString());
+                i++;
+            }
         }
     }
 }

@@ -159,9 +159,12 @@
             this.pomoćToolStripMenuItem.Name = "pomoćToolStripMenuItem";
             this.pomoćToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.pomoćToolStripMenuItem.Text = "Pomoć";
+            this.pomoćToolStripMenuItem.Click += new System.EventHandler(this.pomoćToolStripMenuItem_Click);
             // 
             // drvo
             // 
+            this.drvo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.drvo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drvo.Location = new System.Drawing.Point(487, 30);
             this.drvo.Name = "drvo";
@@ -169,6 +172,7 @@
             this.drvo.Size = new System.Drawing.Size(148, 399);
             this.drvo.TabIndex = 4;
             this.drvo.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.drvo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.drvo_KeyDown);
             this.drvo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.drvo_MouseDoubleClick);
             this.drvo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.drvo_MouseDown);
             this.drvo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.drvo_MouseMove);
@@ -176,13 +180,18 @@
             // mapaPanel
             // 
             this.mapaPanel.AllowDrop = true;
+            this.mapaPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mapaPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mapaPanel.BackgroundImage")));
+            this.mapaPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.mapaPanel.Location = new System.Drawing.Point(0, 27);
             this.mapaPanel.Name = "mapaPanel";
             this.mapaPanel.Size = new System.Drawing.Size(471, 402);
             this.mapaPanel.TabIndex = 5;
             this.mapaPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.mapaPanel_DragDrop);
             this.mapaPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.mapaPanel_DragEnter);
+            this.mapaPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mapaPanel_Paint);
             this.mapaPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mapaPanel_MouseClick);
             // 
             // MainForm
@@ -193,12 +202,11 @@
             this.Controls.Add(this.mapaPanel);
             this.Controls.Add(this.drvo);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Evidencija lokala";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

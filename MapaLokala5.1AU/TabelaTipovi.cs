@@ -19,11 +19,11 @@ namespace MapaLokala5._1AU
         public FilterBtn()
         {
             InitializeComponent();
+            filterCombo.SelectedIndex = 0;
         }
 
         private void TabelaTipovi_Load(object sender, EventArgs e)
         {
-            filterCombo.SelectedItem = "sve";
             reload();
         }
 
@@ -39,7 +39,7 @@ namespace MapaLokala5._1AU
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new TipLokalaForm().Show();
+            new TipLokalaForm().ShowDialog();
             reload();
         }
 
@@ -94,33 +94,59 @@ namespace MapaLokala5._1AU
 
             string select;
 
-            if (id.Equals("sve"))
+            if (textBox1.Text != "")
             {
-                select = "SELECT * FROM lokali";
-            }
-            else
-            {
-                select = "SELECT * FROM tipovi" + " WHERE '"
-                    + id + "' =" + "'" + textBox1.Text + "'";
-            }
 
-            SQLiteDataReader r = MainForm.baza.Select(select);
+                if (id.Equals(" "))
+                {
+                    select = "SELECT * FROM tipovi WHERE"
+                        + " id =" + "'" + textBox1.Text + "' OR"
+                        + " ime =" + "'" + textBox1.Text + "' OR"
+                        + " opis =" + "'" + textBox1.Text + "'";
+                }
+                else
+                {
+                    select = "SELECT * FROM tipovi" + " WHERE "
+                        + id + " =" + "'" + textBox1.Text + "'";
+                }
 
-            tipoviTabela.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
+                SQLiteDataReader r = MainForm.baza.Select(select);
 
-            while(r.Read())
-            {
-                string link = r["ikona"].ToString();
-                Image img = Image.FromFile(link);
-                tipoviTabela.Rows.Add(new object[] { r["id"], r["ime"], img , r["opis"] });
+                tipoviTabela.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
+
+                while (r.Read())
+                {
+                    string link = r["ikona"].ToString();
+                    Image img = Image.FromFile(link);
+                    tipoviTabela.Rows.Add(new object[] { r["id"], r["ime"], img, r["opis"] });
+                }
             }
-            
            
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            string s = "SELECT * FROM tipovi";
+
+            SQLiteDataReader r = MainForm.baza.Select(s);
+
+            filterCombo.SelectedIndex = 0;
+            textBox1.Text = "";
+
+            tipoviTabela.Rows.Clear();  //izbrisi prethodne redove, da posle dodas updejtovane
+
+            while (r.Read())
+            {
+                string link = r["ikona"].ToString();
+                Image img = Image.FromFile(link);
+                tipoviTabela.Rows.Add(new object[] { r["id"], r["ime"], img, r["opis"] });
+            }
         }
     }
 }

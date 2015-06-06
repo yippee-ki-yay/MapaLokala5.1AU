@@ -94,7 +94,7 @@
             this.button1.Location = new System.Drawing.Point(182, 339);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Dodaj";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -104,7 +104,8 @@
             this.idTextBox.Location = new System.Drawing.Point(111, 31);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(146, 20);
-            this.idTextBox.TabIndex = 5;
+            this.idTextBox.TabIndex = 1;
+            this.idTextBox.Leave += new System.EventHandler(this.idTextBox_Leave);
             this.idTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.idTextBox_Validating);
             // 
             // imeTextBox
@@ -112,14 +113,15 @@
             this.imeTextBox.Location = new System.Drawing.Point(111, 79);
             this.imeTextBox.Name = "imeTextBox";
             this.imeTextBox.Size = new System.Drawing.Size(146, 20);
-            this.imeTextBox.TabIndex = 6;
+            this.imeTextBox.TabIndex = 2;
+            this.imeTextBox.Leave += new System.EventHandler(this.imeTextBox_Leave);
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(111, 126);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Učitaj";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -129,14 +131,15 @@
             this.opisTextBox.Location = new System.Drawing.Point(34, 215);
             this.opisTextBox.Name = "opisTextBox";
             this.opisTextBox.Size = new System.Drawing.Size(223, 96);
-            this.opisTextBox.TabIndex = 8;
+            this.opisTextBox.TabIndex = 4;
             this.opisTextBox.Text = "";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(206, 126);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(51, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
@@ -145,7 +148,7 @@
             this.button3.Location = new System.Drawing.Point(34, 339);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
+            this.button3.TabIndex = 6;
             this.button3.Text = "Otkaži";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);

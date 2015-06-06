@@ -43,6 +43,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lokaliDataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -150,6 +151,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.button4);
@@ -165,10 +167,12 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "sve",
+            " ",
             "id",
             "ime",
-            "opis"});
+            "kapacitet",
+            "cene",
+            "alkohol"});
             this.comboBox1.Location = new System.Drawing.Point(237, 43);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(85, 21);
@@ -183,13 +187,23 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(350, 38);
+            this.button4.Location = new System.Drawing.Point(350, 43);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 29);
+            this.button4.Size = new System.Drawing.Size(90, 24);
             this.button4.TabIndex = 0;
             this.button4.Text = "Filtriraj";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(470, 43);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 24);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Osvezi";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // PrikazLokalaForm
             // 
@@ -227,6 +241,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button1;
 
     }
 }
